@@ -5,16 +5,23 @@
              xmlns:vm="clr-namespace:ExerciseXamarin.ViewModels"
              xmlns:controls="clr-namespace:ExerciseXamarin.Controls"
              x:Class="ExerciseXamarin.Views.MainPageView"
-             BackgroundColor="LightGray">
+             BackgroundColor="LightGray"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True">
     <ContentPage.BindingContext>
         <vm:MainPageViewModel></vm:MainPageViewModel>
     </ContentPage.BindingContext>
     <StackLayout>
         <!-- Place new controls here -->
-        <controls:NavigationControl/>
-        <Label Text="Welcome to Xamarin Exercise!!!" 
+        <controls:NavigationControl NameOfPage="{Binding NavigateToPage}"/>
+        <Frame OutlineColor="Black" Padding="5">
+            <Label Text="{Binding Title, Mode=OneTime}"
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="Medium" />
+        </Frame>
+        <Label Text="Home Page!" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="CenterAndExpand"/>
     </StackLayout>
 
 </ContentPage>

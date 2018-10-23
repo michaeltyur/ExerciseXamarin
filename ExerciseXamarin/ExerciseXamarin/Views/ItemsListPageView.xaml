@@ -3,16 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ExerciseXamarin.ViewModels"
              xmlns:controls="clr-namespace:ExerciseXamarin.Controls"
-             x:Class="ExerciseXamarin.Views.ItemsListPageView">
+             x:Class="ExerciseXamarin.Views.ItemsListPageView"
+             BackgroundColor="LightGray">
         <ContentPage.BindingContext>
             <vm:ItemsListPageViewModel></vm:ItemsListPageViewModel>
         </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <DataTemplate x:Key="UserTemplate">
+            <ViewCell>
+                <StackLayout VerticalOptions="Center"
+                             Margin="20"
+                             BackgroundColor="gray"
+                             Padding="10">
+                    <Image Source="{Binding Picture.large}"
+                           WidthRequest="200"
+                           HeightRequest="250"
+                           Margin="5"></Image>
+                    <Label Text="{Binding Name.FullName}" 
+                           FontSize="25"
+                           HorizontalTextAlignment="Center"></Label>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                        <Label FontSize="15" 
+                               Text="City:"
+                               HorizontalTextAlignment="Center"
+                               Margin="5"></Label>
+                        <Label Text="{Binding Location.city}"
+                               HorizontalTextAlignment="Center"
+                               FontSize="20"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                        <Label FontSize="15" 
+                               Text="Phone:"
+                               HorizontalTextAlignment="Center"
+                               Margin="5"></Label>
+                        <Label Text="{Binding Cell}"
+                               HorizontalTextAlignment="Center"
+                               FontSize="20"></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <controls:NavigationControl/>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <controls:NavigationControl NameOfPage="{Binding NavigateToPage}"/>
+            <Frame OutlineColor="Black" Padding="5">
+                <Label Text="{Binding Title, Mode=OneTime}"
+                       HorizontalOptions="CenterAndExpand" 
+                       FontSize="Medium" />
+            </Frame>
+            <ActivityIndicator x:Name="Activity_Indicator" Color="Red" IsRunning="{Binding LoadingBar}"/>
+            <ListView ItemTemplate="{StaticResource UserTemplate}"
+                      ItemsSource="{Binding UsersList}"
+                      Margin="20"
+                      WidthRequest="250"
+                      MinimumWidthRequest="250"></ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

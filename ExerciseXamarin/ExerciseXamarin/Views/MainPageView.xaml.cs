@@ -8,11 +8,12 @@ using Xamarin.Forms;
 
 namespace ExerciseXamarin.Views
 {
-    public partial class MainPageView : ContentPage,IMainPage
+    public partial class MainPageView : ContentPage,IPage
     {
         public MainPageView()
         {
             InitializeComponent();
         }
     }
+ 
 }
