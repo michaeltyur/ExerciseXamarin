@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExerciseXamarin.Controls.UIChangerControl">
+    <ContentView.Content>
+        <StackLayout>
+            <StackLayout Margin="5" 
+                         Orientation="Horizontal" 
+                         HorizontalOptions="Center">
+                <Label x:Name="textEntryLabel" 
+                       VerticalTextAlignment="Center"/>
+                <Entry x:Name="textEntry" 
+                       WidthRequest="200"/>
+            </StackLayout>
+            <StackLayout Margin="5" 
+                         Orientation="Horizontal" 
+                         HorizontalOptions="Center">
+                <Label x:Name="textColorSliderLabel" VerticalTextAlignment="Center"/>
+                <Slider x:Name="textColorSlider"
+                        Maximum="255"
+                        BackgroundColor="Brown"
+                        WidthRequest="600"/>
+            </StackLayout>
+            <StackLayout Margin="5" 
+                         Orientation="Horizontal" 
+                         HorizontalOptions="Center">
+                <Label x:Name="backColorSliderLabel"  VerticalTextAlignment="Center"/>
+                <Slider x:Name="backColorSlider"
+                        Maximum="255"
+                        BackgroundColor="Brown"
+                        WidthRequest="600"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -59,6 +59,8 @@ namespace ExerciseXamarin.ViewModels
 
             INavigation navigation = ((ContentPage)currentPage).Navigation;
 
+           // INavigation navigation = (DependencyService.Get<MainPageView>()).Navigation;
+
             switch (numOfPage)
             {
                 case "CustomControlsPageView":
@@ -91,7 +93,8 @@ namespace ExerciseXamarin.ViewModels
 
                 case "MainPageView":
 
-                    navigation.PopToRootAsync(true);
+                    navigation.PopToRootAsync();
+                  // mainNavigation.PopToRootAsync(true);
                     break;
 
                 default:

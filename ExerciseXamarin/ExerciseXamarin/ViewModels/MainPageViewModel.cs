@@ -16,6 +16,7 @@ namespace ExerciseXamarin.ViewModels
             Title = CurrentDeviceInfo.GetDeviceInfo();
         }
 
+
         private string navigateToPage;
         public string NavigateToPage
         {
@@ -40,28 +41,24 @@ namespace ExerciseXamarin.ViewModels
 
                     navigationPage = DependencyService.Get<CustomControlsPageView>();
                     navigation.PushAsync((ContentPage)navigationPage, true);
-                    navigation.RemovePage((ContentPage)currentPage);
                     break;
 
                 case "EssentialsPageView":
 
                     navigationPage = DependencyService.Get<EssentialsPageView>();
                     navigation.PushAsync((ContentPage)navigationPage, true);
-                    navigation.RemovePage((ContentPage)currentPage);
                     break;
 
                 case "ItemsListPageView":
 
                     navigationPage = DependencyService.Get<ItemsListPageView>();
                     navigation.PushAsync((ContentPage)navigationPage, true);
-                    navigation.RemovePage((ContentPage)currentPage);
                     break;
 
                 case "HttpClientPageView":
 
                     navigationPage = DependencyService.Get<HttpClientPageView>();
                     navigation.PushAsync(DependencyService.Get<HttpClientPageView>(), true);
-                    navigation.RemovePage((ContentPage)currentPage);
                     break;
 
                 //case Pages.MainPageView:

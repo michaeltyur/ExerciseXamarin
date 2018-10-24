@@ -23,8 +23,7 @@ namespace ExerciseXamarin
 
             MainPage = new NavigationPage(DependencyService.Get <MainPageView>()){
                 BarBackgroundColor= Color.DarkGray,
-                BarTextColor = Color.Coral,
-                
+                BarTextColor = Color.Coral,     
                 Title = "Welcome to Xamarin Exersices"
             };
 

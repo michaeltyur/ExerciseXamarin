@@ -15,7 +15,6 @@ namespace ExerciseXamarin.Controls
                                                                      typeof(NavigationControl), 
                                                                      default(string), 
                                                                      BindingMode.TwoWay);
-
         public string NameOfPage
         {
             get
@@ -44,22 +43,49 @@ namespace ExerciseXamarin.Controls
         private void MainPageButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.MainPageView.ToString();
+            ChangeStateNavButtons(Pages.MainPageView);
         }
         private void HttpClientButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.HttpClientPageView.ToString();
+            ChangeStateNavButtons(Pages.HttpClientPageView);
         }
         private void EssentalsButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.EssentialsPageView.ToString();
+            ChangeStateNavButtons(Pages.EssentialsPageView);
         }
         private void ListViewButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.ItemsListPageView.ToString();
+            ChangeStateNavButtons(Pages.ItemsListPageView);
         }
         private void CustomControlButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.CustomControlsPageView.ToString();
+            ChangeStateNavButtons(Pages.CustomControlsPageView);
+        }
+        private void ChangeStateNavButtons(Pages page)
+        {
+            if (page == Pages.MainPageView)
+                MainPageButton.IsEnabled = false;
+            else MainPageButton.IsEnabled = true;
+
+            if (page == Pages.CustomControlsPageView)
+                CustomControlButton.IsEnabled = false;
+            else CustomControlButton.IsEnabled = true;
+
+            if (page == Pages.EssentialsPageView)
+                EssentalsButton.IsEnabled = false;
+            else EssentalsButton.IsEnabled = true;
+
+            if (page == Pages.HttpClientPageView)
+                HttpClientButton.IsEnabled = false;
+            else HttpClientButton.IsEnabled = true;
+
+            if (page == Pages.ItemsListPageView)
+                ListViewButton.IsEnabled = false;
+            else ListViewButton.IsEnabled = true;
         }
     }
 }

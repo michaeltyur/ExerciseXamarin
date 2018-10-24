@@ -9,13 +9,31 @@
         <vm:CustomControlsPageViewModel></vm:CustomControlsPageViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="20" >
             <controls:NavigationControl NameOfPage="{Binding NavigateToPage}"/>
             <Frame OutlineColor="Black" Padding="5">
                 <Label Text="{Binding Title, Mode=OneTime}"
                 HorizontalOptions="CenterAndExpand" 
                 FontSize="Medium" />
             </Frame>
+            <Grid>
+                <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="0">
+                    <controls:UIChangerControl TextEntryLabel="{Binding HomeButtonTextChangerLabel}"
+                                               TextColorSliderLabel="{Binding HttpButtonTextColorChangerLabel}"/>
+                </Frame> 
+                <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="1">
+                    <controls:UIChangerControl TextEntryLabel="{Binding HttpButtonTextChangerLabel}"/>
+                </Frame>
+                <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="2">
+                    <controls:UIChangerControl TextEntryLabel="{Binding EssentialsButtonTextChangerLabel}"/>
+                </Frame>
+                <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="3">
+                    <controls:UIChangerControl TextEntryLabel="{Binding ListViewButtonTextChangerLabel}"/>
+                </Frame>
+                <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="4">
+                    <controls:UIChangerControl TextEntryLabel="{Binding CustomControlTextChangerLabel}"/>
+                </Frame>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

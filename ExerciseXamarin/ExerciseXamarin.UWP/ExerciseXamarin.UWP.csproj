@@ -146,6 +146,9 @@
     <PackageReference Include="Autofac">
       <Version>4.9.0-beta1</Version>
     </PackageReference>
+    <PackageReference Include="HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Intellisense">
+      <Version>0.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Net.Http">
       <Version>2.2.29</Version>
     </PackageReference>
