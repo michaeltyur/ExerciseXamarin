@@ -144,6 +144,12 @@ namespace ExerciseXamarin.Controls
         public UIChangerControl()
         {
             InitializeComponent();
+            textEntry.TextChanged += TextEntry_TextChanged;
+        }
+
+        private void TextEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextEntry = textEntry.Text;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)

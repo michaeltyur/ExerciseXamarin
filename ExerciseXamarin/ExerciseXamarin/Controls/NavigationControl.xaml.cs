@@ -27,6 +27,23 @@ namespace ExerciseXamarin.Controls
             }
         }
 
+        public static readonly BindableProperty ButtonTextValueProperty =
+                                     BindableProperty.Create(nameof(HomeButtonTextValue),
+                                                             typeof(string),
+                                                             typeof(NavigationControl),
+                                                             default(string),
+                                                             BindingMode.TwoWay);
+        public string HomeButtonTextValue
+        {
+            get
+            {
+                return (string)GetValue(ButtonTextValueProperty);
+            }
+            set
+            {
+                SetValue(ButtonTextValueProperty, value);
+            }
+        }
 
         public NavigationControl ()
 		{

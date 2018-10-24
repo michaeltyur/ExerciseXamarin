@@ -13,16 +13,18 @@ namespace ExerciseXamarin.ViewModels
     public class CustomControlsPageViewModel : INotifyPropertyChanged
     {
         public string Title { get; set; }
-        private string homeButtonTextChangerLabel;
-        public string HomeButtonTextChangerLabel
-        {
-            get { return homeButtonTextChangerLabel; }
-            set { homeButtonTextChangerLabel = value;OnPropertyChanged(); }
-        }
-        public string HttpButtonTextChangerLabel { get; set; }
+
+        public string HomeButtonTextChangerLabel { get; set; }
+        public string HomeButtonTextColorChangerLabel { get; set; }
+        public string HomeButtonBackColorChangerLabel { get; set; }
+        public string TextEntryValue { get; set; }     
+
+
         public string EssentialsButtonTextChangerLabel { get; set; }
         public string ListViewButtonTextChangerLabel { get; set; }
         public string CustomControlTextChangerLabel { get; set; }
+
+        public string HttpButtonTextChangerLabel { get; set; }
         public string HttpButtonTextColorChangerLabel { get; set; }
 
         private string navigateToPage;
@@ -43,8 +45,12 @@ namespace ExerciseXamarin.ViewModels
         {
             Title = CurrentDeviceInfo.GetDeviceInfo();
             HomeButtonTextChangerLabel = "Home Button Text Changer";
+            HomeButtonTextColorChangerLabel = "Home Button Text Color Changer";
+            HomeButtonBackColorChangerLabel = "Home Button Backgroind Color Changer";
+
             HttpButtonTextColorChangerLabel = "Http Button Text Color Changer";
             HttpButtonTextChangerLabel = "Http Button Text Changer";
+
             EssentialsButtonTextChangerLabel = "Essentials Button Text Changer";
             ListViewButtonTextChangerLabel = "ListView Button Text Changer";
             CustomControlTextChangerLabel = "CustomControl Text Changer";

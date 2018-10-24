@@ -14,21 +14,25 @@
             </StackLayout>
             <StackLayout Margin="5" 
                          Orientation="Horizontal" 
-                         HorizontalOptions="Center">
-                <Label x:Name="textColorSliderLabel" VerticalTextAlignment="Center"/>
+                         HorizontalOptions="CenterAndExpand">
+                <Label x:Name="textColorSliderLabel" 
+                       VerticalTextAlignment="Center"
+                       VerticalOptions="Center"/>
                 <Slider x:Name="textColorSlider"
                         Maximum="255"
                         BackgroundColor="Brown"
-                        WidthRequest="600"/>
+                        WidthRequest="400"/>
             </StackLayout>
             <StackLayout Margin="5" 
                          Orientation="Horizontal" 
-                         HorizontalOptions="Center">
-                <Label x:Name="backColorSliderLabel"  VerticalTextAlignment="Center"/>
+                         HorizontalOptions="CenterAndExpand">
+                <Label x:Name="backColorSliderLabel"  
+                       VerticalTextAlignment="Center" 
+                       VerticalOptions="Center"/>
                 <Slider x:Name="backColorSlider"
                         Maximum="255"
                         BackgroundColor="Brown"
-                        WidthRequest="600"/>
+                        WidthRequest="400"/>
             </StackLayout>
         </StackLayout>
     </ContentView.Content>

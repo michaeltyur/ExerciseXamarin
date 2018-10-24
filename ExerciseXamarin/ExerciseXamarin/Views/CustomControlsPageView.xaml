@@ -19,10 +19,13 @@
             <Grid>
                 <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="0">
                     <controls:UIChangerControl TextEntryLabel="{Binding HomeButtonTextChangerLabel}"
-                                               TextColorSliderLabel="{Binding HttpButtonTextColorChangerLabel}"/>
+                                               TextColorSliderLabel="{Binding HomeButtonTextColorChangerLabel}" 
+                                               BackColorSliderLabel="{Binding HomeButtonBackColorChangerLabel}"
+                                               TextEntry="{Binding TextEntryValue}"/>
                 </Frame> 
                 <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="1">
-                    <controls:UIChangerControl TextEntryLabel="{Binding HttpButtonTextChangerLabel}"/>
+                    <controls:UIChangerControl TextEntryLabel="{Binding HttpButtonTextChangerLabel}"
+                                               TextColorSliderLabel="{Binding HttpButtonTextColorChangerLabel}"/>
                 </Frame>
                 <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="2">
                     <controls:UIChangerControl TextEntryLabel="{Binding EssentialsButtonTextChangerLabel}"/>
