@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExerciseXamarin.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace ExerciseXamarin.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CustomControlsPageView : ContentPage
+	public partial class CustomControlsPageView : ContentPage, IPage
 	{
 		public CustomControlsPageView()
 		{

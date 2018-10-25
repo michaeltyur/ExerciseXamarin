@@ -16,11 +16,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\UIChangerControl.xaml.cs">
+      <DependentUpon>UIChangerControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavigationControl.xaml.cs">
       <DependentUpon>NavigationControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IMainPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\CurrentDeviceInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CustomControlsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EssentialsPageViewModel.cs" />
@@ -78,6 +84,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\UIChangerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

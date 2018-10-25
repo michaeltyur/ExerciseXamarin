@@ -2,41 +2,43 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExerciseXamarin.Controls.NavigationControl">
-  <ContentView.Content>
-      <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-            <Button BackgroundColor="CornflowerBlue" 
-                    Margin="5" 
-                    x:Name="MainPageButton"
-                    BorderColor="Black" 
-                    BorderRadius="5"
-                    Text="Home Page"></Button>
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
           
-            <Button BackgroundColor="BlueViolet" 
+            <Button x:Name="MainPageButton"
+                    BackgroundColor="CornflowerBlue" 
+                    Margin="5"                     
+                    BorderColor="Black" 
+                    BorderRadius="5"
+                    Text="Home Page"
+                    BackgroundColor="{StaticResource }"></Button>
+          
+            <Button x:Name="HttpClientButton"
+                    BackgroundColor="BlueViolet" 
                     Margin="5" 
                     BorderColor="Black" 
                     BorderRadius="5"
-                    Command="{Binding NavToHttpClientPageViewCommand}"
                     Text="Http Client"></Button>
-          
-            <Button BackgroundColor="Blue" 
+
+            <Button x:Name="EssentalsButton"
+                    BackgroundColor="Blue" 
                     Margin="5" 
                     BorderColor="Black" 
                     BorderRadius="5"
-                    Command="{Binding NavigateToEssentialsPageView}"
                     Text="Essentals"></Button>
-          
-            <Button BackgroundColor="Brown" 
+
+            <Button x:Name="ListViewButton"
+                    BackgroundColor="Brown" 
                     Margin="5" 
                     BorderColor="Black" 
                     BorderRadius="5"
-                    Command="{Binding NavigateToCustomControlsPageView}"
                     Text="ListView with DataTemplate"></Button>
 
-            <Button BackgroundColor="Chocolate" 
+            <Button x:Name="CustomControlButton"
+                    BackgroundColor="Chocolate" 
                     Margin="5" 
                     BorderColor="Black" 
                     BorderRadius="5"
-                    Command="{Binding NavigateToCustomControlsPageView}"
                     Text="Custom Control"></Button>
 
         </StackLayout>

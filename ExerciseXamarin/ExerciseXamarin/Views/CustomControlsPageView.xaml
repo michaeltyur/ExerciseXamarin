@@ -3,16 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ExerciseXamarin.ViewModels"
              xmlns:controls="clr-namespace:ExerciseXamarin.Controls"
-             x:Class="ExerciseXamarin.Views.CustomControlsPageView">
+             xmlns:local="clr-namespace:ExerciseXamarin.Converters"
+             x:Class="ExerciseXamarin.Views.CustomControlsPageView"
+             BackgroundColor="Beige">
     <ContentPage.BindingContext>
         <vm:CustomControlsPageViewModel></vm:CustomControlsPageViewModel>
     </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <controls:NavigationControl/>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="20" >
+            <controls:NavigationControl NameOfPage="{Binding NavigateToPage}"/>
+            <Frame OutlineColor="Black" Padding="5">
+                <Label Text="{Binding Title, Mode=OneTime}"
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="Medium" />
+            </Frame>
+            <Grid>
+                <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="0">
+                    <controls:UIChangerControl TextEntryLabel="{Binding HomeButtonTextChangerLabel}"
+                                               TextColorSliderLabel="{Binding HomeButtonTextColorChangerLabel}" 
+                                               BackColorSliderLabel="{Binding HomeButtonBackColorChangerLabel}"
+                                               TextEntry="{Binding TextEntryValue}"/>
+                </Frame> 
+                <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="1">
+                    <controls:UIChangerControl TextEntryLabel="{Binding HttpButtonTextChangerLabel}"
+                                               TextColorSliderLabel="{Binding HttpButtonTextColorChangerLabel}"/>
+                </Frame>
+                <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="2">
+                    <controls:UIChangerControl TextEntryLabel="{Binding EssentialsButtonTextChangerLabel}"/>
+                </Frame>
+                <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="3">
+                    <controls:UIChangerControl TextEntryLabel="{Binding ListViewButtonTextChangerLabel}"/>
+                </Frame>
+                <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="4">
+                    <controls:UIChangerControl TextEntryLabel="{Binding CustomControlTextChangerLabel}"/>
+                </Frame>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -3,16 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ExerciseXamarin.ViewModels"
              xmlns:controls="clr-namespace:ExerciseXamarin.Controls"
-             x:Class="ExerciseXamarin.Views.EssentialsPageView">
+             x:Class="ExerciseXamarin.Views.EssentialsPageView"
+             BackgroundColor="Aqua">
     <ContentPage.BindingContext>
         <vm:EssentialsPageViewModel></vm:EssentialsPageViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <controls:NavigationControl/>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <controls:NavigationControl NameOfPage="{Binding NavigateToPage}"/>
+            <Frame OutlineColor="Black" Padding="5">
+                <Label Text="{Binding Title, Mode=OneTime}"
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="Medium" />
+            </Frame>
+            <Label Text="{Binding Alert}"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Medium"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
