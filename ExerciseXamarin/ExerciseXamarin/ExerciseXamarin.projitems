@@ -20,7 +20,7 @@
       <DependentUpon>NavigationControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IMainPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\IMainPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CustomControlsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EssentialsPageViewModel.cs" />
@@ -76,5 +76,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
   </ItemGroup>
 </Project>
