@@ -24,6 +24,7 @@
       <DependentUpon>NavigationControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\CurrentDeviceInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />

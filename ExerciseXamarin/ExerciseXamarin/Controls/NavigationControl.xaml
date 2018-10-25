@@ -2,15 +2,16 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExerciseXamarin.Controls.NavigationControl">
-  <ContentView.Content>
-      <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
           
             <Button x:Name="MainPageButton"
                     BackgroundColor="CornflowerBlue" 
                     Margin="5"                     
                     BorderColor="Black" 
                     BorderRadius="5"
-                    Text="Home Page"></Button>
+                    Text="Home Page"
+                    BackgroundColor="{StaticResource }"></Button>
           
             <Button x:Name="HttpClientButton"
                     BackgroundColor="BlueViolet" 

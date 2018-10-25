@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ExerciseXamarin.ViewModels"
              xmlns:controls="clr-namespace:ExerciseXamarin.Controls"
+             xmlns:local="clr-namespace:ExerciseXamarin.Converters"
              x:Class="ExerciseXamarin.Views.CustomControlsPageView"
              BackgroundColor="Beige">
     <ContentPage.BindingContext>
         <vm:CustomControlsPageViewModel></vm:CustomControlsPageViewModel>
     </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <StackLayout Padding="20" >
             <controls:NavigationControl NameOfPage="{Binding NavigateToPage}"/>
