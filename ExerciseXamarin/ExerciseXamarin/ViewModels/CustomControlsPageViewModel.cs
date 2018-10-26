@@ -17,8 +17,29 @@ namespace ExerciseXamarin.ViewModels
         public string HomeButtonTextChangerLabel { get; set; }
         public string HomeButtonTextColorChangerLabel { get; set; }
         public string HomeButtonBackColorChangerLabel { get; set; }
-        public string TextEntryValue { get; set; }     
 
+        #region Home Button
+        private string homeButtonText;
+        public string HomeButtonText
+        {
+            get { return homeButtonText; }
+            set { homeButtonText = value;OnPropertyChanged(); }
+        }
+
+        private int homeButtonBackColor;
+        public int HomeButtonBackColor
+        {
+            get { return homeButtonBackColor; }
+            set { homeButtonBackColor = value; OnPropertyChanged(); }
+        }
+
+        private int homeButtonTextColor;
+        public int HomeButtonTextColor
+        {
+            get { return homeButtonTextColor; }
+            set { homeButtonTextColor = value; OnPropertyChanged(); }
+        }
+        #endregion
 
         public string EssentialsButtonTextChangerLabel { get; set; }
         public string ListViewButtonTextChangerLabel { get; set; }
@@ -27,10 +48,9 @@ namespace ExerciseXamarin.ViewModels
         public string HttpButtonTextChangerLabel { get; set; }
         public string HttpButtonTextColorChangerLabel { get; set; }
 
-        private string navigateToPage;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private string navigateToPage;
         public string NavigateToPage
         {
             get { return navigateToPage; }

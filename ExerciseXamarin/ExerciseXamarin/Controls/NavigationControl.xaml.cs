@@ -30,42 +30,22 @@ namespace ExerciseXamarin.Controls
         }
         #endregion
 
-        #region Home Button Text Value
-        public static readonly BindableProperty ButtonTextValueProperty =
-                                     BindableProperty.Create(nameof(HomeButtonTextValue),
-                                                             typeof(string),
-                                                             typeof(NavigationControl),
-                                                             default(string),
-                                                             BindingMode.TwoWay);
-        public string HomeButtonTextValue
-        {
-            get
-            {
-                return (string)GetValue(ButtonTextValueProperty);
-            }
-            set
-            {
-                SetValue(ButtonTextValueProperty, value);
-            }
-        }
-        #endregion
-
         #region Home Text  Button
-        public static readonly BindableProperty TextButtonProperty =
-                                             BindableProperty.Create(nameof(HomeTextButton),
+        public static readonly BindableProperty HomeButtonTextProperty =
+                                             BindableProperty.Create(nameof(HomeButtonText),
                                                                      typeof(string),
                                                                      typeof(NavigationControl),
                                                                      default(string),
                                                                      BindingMode.TwoWay);
-        public string HomeTextButton
+        public string HomeButtonText
         {
             get
             {
-                return (string)GetValue(TextButtonProperty);
+                return (string)GetValue(HomeButtonTextProperty);
             }
             set
             {
-                SetValue(TextButtonProperty, value);
+                SetValue(HomeButtonTextProperty, value);
             }
         }
         #endregion
@@ -73,15 +53,15 @@ namespace ExerciseXamarin.Controls
         #region Home Button Background Color
         public static readonly BindableProperty HomeButtonBackColorProperty =
                                              BindableProperty.Create(nameof(HomeButtonBackColor),
-                                                                     typeof(Color),
+                                                                     typeof(int),
                                                                      typeof(NavigationControl),
-                                                                     default(Color),
-                                                                     BindingMode.TwoWay);
-        public Color HomeButtonBackColor
+                                                                     default(int),
+                                                                      BindingMode.TwoWay);
+        public int HomeButtonBackColor
         {
             get
             {
-                return (Color)GetValue(HomeButtonBackColorProperty);
+                return (int)GetValue(HomeButtonBackColorProperty);
             }
             set
             {
@@ -93,15 +73,15 @@ namespace ExerciseXamarin.Controls
         #region Home Button Text Color
         public static readonly BindableProperty HomeButtonTextColorProperty =
                                              BindableProperty.Create(nameof(HomeButtonTextColor),
-                                                                     typeof(Color),
+                                                                     typeof(int),
                                                                      typeof(NavigationControl),
-                                                                     default(Color),
+                                                                     default(int),
                                                                      BindingMode.TwoWay);
-        public Color HomeButtonTextColor
+        public int HomeButtonTextColor
         {
             get
             {
-                return (Color)GetValue(HomeButtonTextColorProperty);
+                return (int)GetValue(HomeButtonTextColorProperty);
             }
             set
             {
@@ -171,21 +151,26 @@ namespace ExerciseXamarin.Controls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            //home button
+          
+            #region Home Button
             base.OnPropertyChanged(propertyName);
-            if (propertyName == TextButtonProperty.PropertyName)
+            if (propertyName == HomeButtonTextProperty.PropertyName)
             {
-                MainPageButton.Text = HomeTextButton;
+                MainPageButton.Text = HomeButtonText;
             }
             if (propertyName == HomeButtonBackColorProperty.PropertyName)
             {
-                MainPageButton.BackgroundColor = HomeButtonBackColor;
+                var newColor= Color.FromRgb(HomeButtonBackColor, 255/ HomeButtonBackColor, 255- HomeButtonBackColor);
+
+                MainPageButton.BackgroundColor = newColor;
             }
             if (propertyName == HomeButtonTextColorProperty.PropertyName)
             {
-                MainPageButton.TextColor = HomeButtonTextColor;
-            }
+                var newColor = Color.FromRgb(255-HomeButtonTextColor, 255, HomeButtonTextColor);
 
+                MainPageButton.TextColor = newColor;
+            }
+            #endregion
             //if (propertyName == SliderValueTextColorProperty.PropertyName)
             //{
             //    textColorSlider.Value = SliderValueTextColor;

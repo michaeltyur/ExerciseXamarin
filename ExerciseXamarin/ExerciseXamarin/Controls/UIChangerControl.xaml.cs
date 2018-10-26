@@ -81,15 +81,15 @@ namespace ExerciseXamarin.Controls
         #region Slider Value Text Color
         public static readonly BindableProperty SliderValueTextColorProperty =
              BindableProperty.Create(nameof(SliderValueTextColor),
-                                     typeof(double),
+                                     typeof(int),
                                      typeof(UIChangerControl),
-                                     default(double),
+                                     default(int),
                                      BindingMode.TwoWay);
-        public double SliderValueTextColor
+        public int SliderValueTextColor
         {
             get
             {
-                return (double)GetValue(SliderValueTextColorProperty);
+                return (int)GetValue(SliderValueTextColorProperty);
             }
             set
             {
@@ -123,15 +123,15 @@ namespace ExerciseXamarin.Controls
         #region Slider Value BackColor
         public static readonly BindableProperty SliderValueBackColorProperty =
            BindableProperty.Create(nameof(SliderValueBackColor),
-                                   typeof(double),
+                                   typeof(int),
                                    typeof(UIChangerControl),
-                                   default(double),
+                                   default(int),
                                    BindingMode.TwoWay);
-        public double SliderValueBackColor
+        public int SliderValueBackColor
         {
             get
             {
-                return (double)GetValue(SliderValueBackColorProperty);
+                return (int)GetValue(SliderValueBackColorProperty);
             }
             set
             {
@@ -145,6 +145,18 @@ namespace ExerciseXamarin.Controls
         {
             InitializeComponent();
             textEntry.TextChanged += TextEntry_TextChanged;
+            textColorSlider.ValueChanged += TextColorSlider_ValueChanged;                   
+            backColorSlider.ValueChanged += BackColorSlider_ValueChanged;
+        }
+
+        private void TextColorSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SliderValueTextColor = (int)textColorSlider.Value;
+        }
+
+        private void BackColorSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SliderValueBackColor = (int)backColorSlider.Value;
         }
 
         private void TextEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -155,25 +167,27 @@ namespace ExerciseXamarin.Controls
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
+            //Labels
             if (propertyName == TextEntryLabelProperty.PropertyName)
             {
                 textEntryLabel.Text = TextEntryLabel;
             }
-            if (propertyName == TextEntryProperty.PropertyName)
+            if (propertyName == BackColorSliderLabelProperty.PropertyName)
             {
-                textEntry.Text = TextEntry;
+                backColorSliderLabel.Text = BackColorSliderLabel;
             }
             if (propertyName == TextColorSliderLabelProperty.PropertyName)
             {
                 textColorSliderLabel.Text = TextColorSliderLabel;
             }
+
+            if (propertyName == TextEntryProperty.PropertyName)
+            {
+                textEntry.Text = TextEntry;
+            }
             if (propertyName == SliderValueTextColorProperty.PropertyName)
             {
                 textColorSlider.Value = SliderValueTextColor;
-            }
-            if (propertyName == BackColorSliderLabelProperty.PropertyName)
-            {
-                backColorSliderLabel.Text = BackColorSliderLabel;
             }
             if (propertyName == SliderValueBackColorProperty.PropertyName)
             {

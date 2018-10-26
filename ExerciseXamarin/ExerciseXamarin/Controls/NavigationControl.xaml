@@ -6,12 +6,11 @@
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
           
             <Button x:Name="MainPageButton"
-                    BackgroundColor="CornflowerBlue" 
                     Margin="5"                     
                     BorderColor="Black" 
                     BorderRadius="5"
                     Text="Home Page"
-                    BackgroundColor="{StaticResource }"></Button>
+                    BackgroundColor="CornflowerBlue"></Button>
           
             <Button x:Name="HttpClientButton"
                     BackgroundColor="BlueViolet" 

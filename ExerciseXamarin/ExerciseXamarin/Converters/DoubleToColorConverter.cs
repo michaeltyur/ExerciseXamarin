@@ -1,19 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
-using Windows.UI.Xaml.Data;
+using System.Globalization;
+using Xamarin.Forms;
 
 namespace ExerciseXamarin.Converters
 {
    public class DoubleToColorConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
 
-            return new Color();
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var doubleValue = (int)((double)value);
+             
+            return  Color.FromRgb(doubleValue, 255, doubleValue);
         }
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
