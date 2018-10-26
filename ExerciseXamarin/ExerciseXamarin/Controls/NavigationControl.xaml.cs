@@ -104,50 +104,53 @@ namespace ExerciseXamarin.Controls
         private void MainPageButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.MainPageView.ToString();
-            ChangeStateNavButtons(Pages.MainPageView);
+            //ChangeStateNavButtons(Pages.MainPageView);
         }
         private void HttpClientButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.HttpClientPageView.ToString();
-            ChangeStateNavButtons(Pages.HttpClientPageView);
+            //ChangeStateNavButtons(Pages.HttpClientPageView);
         }
         private void EssentalsButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.EssentialsPageView.ToString();
-            ChangeStateNavButtons(Pages.EssentialsPageView);
+           // ChangeStateNavButtons(Pages.EssentialsPageView);
         }
         private void ListViewButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.ItemsListPageView.ToString();
-            ChangeStateNavButtons(Pages.ItemsListPageView);
+           // ChangeStateNavButtons(Pages.ItemsListPageView);
         }
         private void CustomControlButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.CustomControlsPageView.ToString();
-            ChangeStateNavButtons(Pages.CustomControlsPageView);
+            //ChangeStateNavButtons(Pages.CustomControlsPageView);
         }
-        private void ChangeStateNavButtons(Pages page)
-        {
-            if (page == Pages.MainPageView)
-                MainPageButton.IsEnabled = false;
-            else MainPageButton.IsEnabled = true;
+        //private void ChangeStateNavButtons(Pages page)
+        //{
+        //    if (page == Pages.MainPageView)
+        //    {
+        //        MainPageButton.IsEnabled = false;
+        //        MainPageButton.IsEnabled = false;
+        //    }
+        //    else MainPageButton.IsEnabled = true;
 
-            if (page == Pages.CustomControlsPageView)
-                CustomControlButton.IsEnabled = false;
-            else CustomControlButton.IsEnabled = true;
+        //    if (page == Pages.CustomControlsPageView)
+        //        CustomControlButton.IsEnabled = false;
+        //    else CustomControlButton.IsEnabled = true;
 
-            if (page == Pages.EssentialsPageView)
-                EssentalsButton.IsEnabled = false;
-            else EssentalsButton.IsEnabled = true;
+        //    if (page == Pages.EssentialsPageView)
+        //        EssentalsButton.IsEnabled = false;
+        //    else EssentalsButton.IsEnabled = true;
 
-            if (page == Pages.HttpClientPageView)
-                HttpClientButton.IsEnabled = false;
-            else HttpClientButton.IsEnabled = true;
+        //    if (page == Pages.HttpClientPageView)
+        //        HttpClientButton.IsEnabled = false;
+        //    else HttpClientButton.IsEnabled = true;
 
-            if (page == Pages.ItemsListPageView)
-                ListViewButton.IsEnabled = false;
-            else ListViewButton.IsEnabled = true;
-        }
+        //    if (page == Pages.ItemsListPageView)
+        //        ListViewButton.IsEnabled = false;
+        //    else ListViewButton.IsEnabled = true;
+        //}
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -160,13 +163,13 @@ namespace ExerciseXamarin.Controls
             }
             if (propertyName == HomeButtonBackColorProperty.PropertyName)
             {
-                var newColor= Color.FromRgb(HomeButtonBackColor, 255/ HomeButtonBackColor, 255- HomeButtonBackColor);
+                var newColor= Color.FromRgb(HomeButtonBackColor, 125+ HomeButtonBackColor, 255- HomeButtonBackColor);
 
                 MainPageButton.BackgroundColor = newColor;
             }
             if (propertyName == HomeButtonTextColorProperty.PropertyName)
             {
-                var newColor = Color.FromRgb(255-HomeButtonTextColor, 255, HomeButtonTextColor);
+                var newColor = Color.FromRgb(HomeButtonTextColor, 255, HomeButtonTextColor + HomeButtonTextColor);
 
                 MainPageButton.TextColor = newColor;
             }

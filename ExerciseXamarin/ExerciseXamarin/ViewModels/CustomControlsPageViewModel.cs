@@ -12,7 +12,6 @@ namespace ExerciseXamarin.ViewModels
 {
     public class CustomControlsPageViewModel : INotifyPropertyChanged
     {
-        public string Title { get; set; }
 
         public string HomeButtonTextChangerLabel { get; set; }
         public string HomeButtonTextColorChangerLabel { get; set; }
@@ -41,12 +40,45 @@ namespace ExerciseXamarin.ViewModels
         }
         #endregion
 
-        public string EssentialsButtonTextChangerLabel { get; set; }
-        public string ListViewButtonTextChangerLabel { get; set; }
-        public string CustomControlTextChangerLabel { get; set; }
+        #region Page Title
+        private string title;
+        public string Title
+        {
+            get { return title; }
+            set
+            {
+                title = value;
+                OnPropertyChanged();
+            }
+        }
+        public string PageTitleTextValueChangerLabel { get; set; }
+        public string PageTitleTextColorChangerLabel { get; set; }
+        public string PageTitleBackColorChangerLabel { get; set; }
 
-        public string HttpButtonTextChangerLabel { get; set; }
-        public string HttpButtonTextColorChangerLabel { get; set; }
+        public int pageTitleTextColorChanger;
+        public int PageTitleTextColorChanger
+        {
+            get { return pageTitleTextColorChanger; }
+            set
+            {
+                pageTitleTextColorChanger = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int pageTitleBackColorChanger;
+        public int PageTitleBackColorChanger
+        {
+            get { return pageTitleBackColorChanger; }
+            set
+            {
+                pageTitleBackColorChanger = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -68,12 +100,11 @@ namespace ExerciseXamarin.ViewModels
             HomeButtonTextColorChangerLabel = "Home Button Text Color Changer";
             HomeButtonBackColorChangerLabel = "Home Button Backgroind Color Changer";
 
-            HttpButtonTextColorChangerLabel = "Http Button Text Color Changer";
-            HttpButtonTextChangerLabel = "Http Button Text Changer";
+            PageTitleTextValueChangerLabel = "Page Title Text Value Changer";
+            PageTitleTextColorChangerLabel = "Page Title Text Color Changer";
+            PageTitleBackColorChangerLabel = "Page Title Background Changer";
 
-            EssentialsButtonTextChangerLabel = "Essentials Button Text Changer";
-            ListViewButtonTextChangerLabel = "ListView Button Text Changer";
-            CustomControlTextChangerLabel = "CustomControl Text Changer";
+            PageTitleTextColorChanger = 255;
         }
         public void Navigate(string numOfPage)
         {

@@ -16,10 +16,14 @@
                                         HomeButtonBackColor="{Binding HomeButtonBackColor}"
                                         HomeButtonTextColor="{Binding HomeButtonTextColor}"
                                         HomeButtonText="{Binding HomeButtonText}"/>
-            <Frame OutlineColor="Black" Padding="5">
-                <Label Text="{Binding Title, Mode=OneTime}"
-                HorizontalOptions="CenterAndExpand" 
-                FontSize="Medium" />
+            <Frame OutlineColor="Black" 
+                   Padding="5" 
+                   BackgroundColor="{Binding PageTitleBackColorChanger,Converter={StaticResource doubleToColor}}">
+                <Label Text="{Binding Title, Mode=TwoWay}"
+                       HorizontalOptions="CenterAndExpand" 
+                       FontSize="Medium" 
+                       BackgroundColor="{Binding PageTitleBackColorChanger,Converter={StaticResource doubleToColor}}"
+                       TextColor="{Binding PageTitleTextColorChanger,Converter={StaticResource doubleToColor}"/>
             </Frame>
             <Grid>
                 <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="0">
@@ -27,12 +31,16 @@
                                                TextColorSliderLabel="{Binding HomeButtonTextColorChangerLabel}" 
                                                BackColorSliderLabel="{Binding HomeButtonBackColorChangerLabel}"
                                                TextEntry="{Binding TextEntryValue}"
-                                               SliderValueBackColor="{Binding HomeButtonBackColor}"
-                                               SliderValueTextColor="{Binding HomeButtonTextColor}"/>
+                                               SliderValueTextColor="{Binding HomeButtonTextColor}"
+                                               SliderValueBackColor="{Binding HomeButtonBackColor}"/>
                 </Frame>
                 <Frame OutlineColor="MidnightBlue" Padding="5" Grid.Row="1">
-                    <controls:UIChangerControl TextEntryLabel="{Binding HttpButtonTextChangerLabel}"
-                                               TextColorSliderLabel="{Binding HttpButtonTextColorChangerLabel}"/>
+                    <controls:UIChangerControl TextEntryLabel="{Binding PageTitleTextValueChangerLabel}"
+                                               TextColorSliderLabel="{Binding PageTitleTextColorChangerLabel}"
+                                               BackColorSliderLabel="{Binding PageTitleBackColorChangerLabel}"
+                                               TextEntry="{Binding Title}"
+                                               SliderValueTextColor="{Binding PageTitleTextColorChanger}"
+                                               SliderValueBackColor="{Binding PageTitleBackColorChanger}"/>
                 </Frame>
             </Grid>
         </StackLayout>
