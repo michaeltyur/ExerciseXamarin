@@ -11,7 +11,7 @@
                     BorderColor="Black" 
                     BorderRadius="5"
                     Text="Home Page"
-                    BackgroundColor="{StaticResource }"></Button>
+                    ></Button>
           
             <Button x:Name="HttpClientButton"
                     BackgroundColor="BlueViolet" 

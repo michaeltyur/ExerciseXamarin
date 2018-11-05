@@ -27,6 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\CurrentDeviceInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NavManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CustomControlsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EssentialsPageViewModel.cs" />
