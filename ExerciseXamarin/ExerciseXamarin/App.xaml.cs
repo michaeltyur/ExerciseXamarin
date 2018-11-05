@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Autofac;
 using ExerciseXamarin.Interfaces;
+using ExerciseXamarin.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ExerciseXamarin
@@ -20,6 +21,7 @@ namespace ExerciseXamarin
             DependencyService.Register<HttpClientPageView,HttpClientPageView>();
             DependencyService.Register<ItemsListPageView, ItemsListPageView>();
             DependencyService.Register<EssentialsPageView, EssentialsPageView>();
+            DependencyService.Register<NavManager, NavManager>();
 
             MainPage = new NavigationPage(DependencyService.Get<MainPageView>())
             {

@@ -1,5 +1,6 @@
 ﻿using ExerciseXamarin.Helpers;
 using ExerciseXamarin.Interfaces;
+using ExerciseXamarin.Models;
 using ExerciseXamarin.Views;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,11 @@ namespace ExerciseXamarin.ViewModels
    public class MainPageViewModel
     {
         public string Title { get; set; }
+        private NavManager _navManager;
+
         public MainPageViewModel()
         {
+            _navManager= DependencyService.Get<NavManager>();
             Title = CurrentDeviceInfo.GetDeviceInfo();
         }
 
@@ -31,46 +35,49 @@ namespace ExerciseXamarin.ViewModels
         {
             IPage currentPage = DependencyService.Get<MainPageView>();
 
-            IPage navigationPage;
+            _navManager.Navigate(currentPage,numOfPage);
 
-            INavigation navigation = ((ContentPage)currentPage).Navigation;
+            //IPage navigationPage;
 
-            switch (numOfPage)
-            {
-                case "CustomControlsPageView":
+            //INavigation navigation = ((ContentPage)currentPage).Navigation;
 
-                    navigationPage = DependencyService.Get<CustomControlsPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
-                    break;
+            //switch (numOfPage)
+            //{
+            //    case "CustomControlsPageView":
 
-                case "EssentialsPageView":
+            //        navigationPage = DependencyService.Get<CustomControlsPageView>();
+            //        navigation.PushAsync((ContentPage)navigationPage, true);
+            //        break;
 
-                    navigationPage = DependencyService.Get<EssentialsPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
-                    break;
+            //    case "EssentialsPageView":
 
-                case "ItemsListPageView":
+            //        navigationPage = DependencyService.Get<EssentialsPageView>();
+            //        navigation.PushAsync((ContentPage)navigationPage, true);
+            //        break;
 
-                    navigationPage = DependencyService.Get<ItemsListPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
-                    break;
+            //    case "ItemsListPageView":
 
-                case "HttpClientPageView":
+            //        navigationPage = DependencyService.Get<ItemsListPageView>();
+            //        navigation.PushAsync((ContentPage)navigationPage, true);
+            //        break;
 
-                    navigationPage = DependencyService.Get<HttpClientPageView>();
-                    navigation.PushAsync(DependencyService.Get<HttpClientPageView>(), true);
-                    break;
+            //    case "HttpClientPageView":
 
-                //case Pages.MainPageView:
+            //        navigationPage = DependencyService.Get<HttpClientPageView>();
+            //        navigation.PushAsync(DependencyService.Get<HttpClientPageView>(), true);
+            //        break;
 
-                //    navigation.PopToRootAsync(true);
-                //    break;
+            //case Pages.MainPageView:
 
-                default:
-                    break;
-            }
+            //    navigation.PopToRootAsync(true);
+            //    break;
+
+            //default:
+            //    break;
         }
-    }
+   }
+}
+
     public enum Pages
     {
         MainPageView = 1,
@@ -79,4 +86,3 @@ namespace ExerciseXamarin.ViewModels
         HttpClientPageView,
         ItemsListPageView
     }
-}
