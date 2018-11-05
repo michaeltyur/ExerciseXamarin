@@ -30,42 +30,22 @@ namespace ExerciseXamarin.Controls
         }
         #endregion
 
-        #region Home Button Text Value
-        public static readonly BindableProperty ButtonTextValueProperty =
-                                     BindableProperty.Create(nameof(HomeButtonTextValue),
-                                                             typeof(string),
-                                                             typeof(NavigationControl),
-                                                             default(string),
-                                                             BindingMode.TwoWay);
-        public string HomeButtonTextValue
-        {
-            get
-            {
-                return (string)GetValue(ButtonTextValueProperty);
-            }
-            set
-            {
-                SetValue(ButtonTextValueProperty, value);
-            }
-        }
-        #endregion
-
         #region Home Text  Button
-        public static readonly BindableProperty TextButtonProperty =
-                                             BindableProperty.Create(nameof(HomeTextButton),
+        public static readonly BindableProperty HomeButtonTextProperty =
+                                             BindableProperty.Create(nameof(HomeButtonText),
                                                                      typeof(string),
                                                                      typeof(NavigationControl),
                                                                      default(string),
                                                                      BindingMode.TwoWay);
-        public string HomeTextButton
+        public string HomeButtonText
         {
             get
             {
-                return (string)GetValue(TextButtonProperty);
+                return (string)GetValue(HomeButtonTextProperty);
             }
             set
             {
-                SetValue(TextButtonProperty, value);
+                SetValue(HomeButtonTextProperty, value);
             }
         }
         #endregion
@@ -73,15 +53,15 @@ namespace ExerciseXamarin.Controls
         #region Home Button Background Color
         public static readonly BindableProperty HomeButtonBackColorProperty =
                                              BindableProperty.Create(nameof(HomeButtonBackColor),
-                                                                     typeof(Color),
+                                                                     typeof(int),
                                                                      typeof(NavigationControl),
-                                                                     default(Color),
-                                                                     BindingMode.TwoWay);
-        public Color HomeButtonBackColor
+                                                                     default(int),
+                                                                      BindingMode.TwoWay);
+        public int HomeButtonBackColor
         {
             get
             {
-                return (Color)GetValue(HomeButtonBackColorProperty);
+                return (int)GetValue(HomeButtonBackColorProperty);
             }
             set
             {
@@ -93,15 +73,15 @@ namespace ExerciseXamarin.Controls
         #region Home Button Text Color
         public static readonly BindableProperty HomeButtonTextColorProperty =
                                              BindableProperty.Create(nameof(HomeButtonTextColor),
-                                                                     typeof(Color),
+                                                                     typeof(int),
                                                                      typeof(NavigationControl),
-                                                                     default(Color),
+                                                                     default(int),
                                                                      BindingMode.TwoWay);
-        public Color HomeButtonTextColor
+        public int HomeButtonTextColor
         {
             get
             {
-                return (Color)GetValue(HomeButtonTextColorProperty);
+                return (int)GetValue(HomeButtonTextColorProperty);
             }
             set
             {
@@ -124,68 +104,76 @@ namespace ExerciseXamarin.Controls
         private void MainPageButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.MainPageView.ToString();
-            ChangeStateNavButtons(Pages.MainPageView);
+            //ChangeStateNavButtons(Pages.MainPageView);
         }
         private void HttpClientButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.HttpClientPageView.ToString();
-            ChangeStateNavButtons(Pages.HttpClientPageView);
+            //ChangeStateNavButtons(Pages.HttpClientPageView);
         }
         private void EssentalsButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.EssentialsPageView.ToString();
-            ChangeStateNavButtons(Pages.EssentialsPageView);
+           // ChangeStateNavButtons(Pages.EssentialsPageView);
         }
         private void ListViewButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.ItemsListPageView.ToString();
-            ChangeStateNavButtons(Pages.ItemsListPageView);
+           // ChangeStateNavButtons(Pages.ItemsListPageView);
         }
         private void CustomControlButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.CustomControlsPageView.ToString();
-            ChangeStateNavButtons(Pages.CustomControlsPageView);
+            //ChangeStateNavButtons(Pages.CustomControlsPageView);
         }
-        private void ChangeStateNavButtons(Pages page)
-        {
-            if (page == Pages.MainPageView)
-                MainPageButton.IsEnabled = false;
-            else MainPageButton.IsEnabled = true;
+        //private void ChangeStateNavButtons(Pages page)
+        //{
+        //    if (page == Pages.MainPageView)
+        //    {
+        //        MainPageButton.IsEnabled = false;
+        //        MainPageButton.IsEnabled = false;
+        //    }
+        //    else MainPageButton.IsEnabled = true;
 
-            if (page == Pages.CustomControlsPageView)
-                CustomControlButton.IsEnabled = false;
-            else CustomControlButton.IsEnabled = true;
+        //    if (page == Pages.CustomControlsPageView)
+        //        CustomControlButton.IsEnabled = false;
+        //    else CustomControlButton.IsEnabled = true;
 
-            if (page == Pages.EssentialsPageView)
-                EssentalsButton.IsEnabled = false;
-            else EssentalsButton.IsEnabled = true;
+        //    if (page == Pages.EssentialsPageView)
+        //        EssentalsButton.IsEnabled = false;
+        //    else EssentalsButton.IsEnabled = true;
 
-            if (page == Pages.HttpClientPageView)
-                HttpClientButton.IsEnabled = false;
-            else HttpClientButton.IsEnabled = true;
+        //    if (page == Pages.HttpClientPageView)
+        //        HttpClientButton.IsEnabled = false;
+        //    else HttpClientButton.IsEnabled = true;
 
-            if (page == Pages.ItemsListPageView)
-                ListViewButton.IsEnabled = false;
-            else ListViewButton.IsEnabled = true;
-        }
+        //    if (page == Pages.ItemsListPageView)
+        //        ListViewButton.IsEnabled = false;
+        //    else ListViewButton.IsEnabled = true;
+        //}
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            //home button
+          
+            #region Home Button
             base.OnPropertyChanged(propertyName);
-            if (propertyName == TextButtonProperty.PropertyName)
+            if (propertyName == HomeButtonTextProperty.PropertyName)
             {
-                MainPageButton.Text = HomeTextButton;
+                MainPageButton.Text = HomeButtonText;
             }
             if (propertyName == HomeButtonBackColorProperty.PropertyName)
             {
-                MainPageButton.BackgroundColor = HomeButtonBackColor;
+                var newColor= Color.FromRgb(HomeButtonBackColor, 125+ HomeButtonBackColor, 255- HomeButtonBackColor);
+
+                MainPageButton.BackgroundColor = newColor;
             }
             if (propertyName == HomeButtonTextColorProperty.PropertyName)
             {
-                MainPageButton.TextColor = HomeButtonTextColor;
-            }
+                var newColor = Color.FromRgb(HomeButtonTextColor, 255, HomeButtonTextColor + HomeButtonTextColor);
 
+                MainPageButton.TextColor = newColor;
+            }
+            #endregion
             //if (propertyName == SliderValueTextColorProperty.PropertyName)
             //{
             //    textColorSlider.Value = SliderValueTextColor;

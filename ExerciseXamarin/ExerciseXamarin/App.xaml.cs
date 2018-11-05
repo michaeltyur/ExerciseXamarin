@@ -23,9 +23,10 @@ namespace ExerciseXamarin
             DependencyService.Register<EssentialsPageView, EssentialsPageView>();
             DependencyService.Register<NavManager, NavManager>();
 
-            MainPage = new NavigationPage(DependencyService.Get <MainPageView>()){
-                BarBackgroundColor= Color.DarkGray,
-                BarTextColor = Color.Coral,     
+            MainPage = new NavigationPage(DependencyService.Get<MainPageView>())
+            {
+                BarBackgroundColor = Color.DarkGray,
+                BarTextColor = Color.Coral,
                 Title = "Welcome to Xamarin Exersices"
             };
 

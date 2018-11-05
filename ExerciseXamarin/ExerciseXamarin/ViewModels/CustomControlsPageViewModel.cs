@@ -12,25 +12,77 @@ namespace ExerciseXamarin.ViewModels
 {
     public class CustomControlsPageViewModel : INotifyPropertyChanged
     {
-        public string Title { get; set; }
 
         public string HomeButtonTextChangerLabel { get; set; }
         public string HomeButtonTextColorChangerLabel { get; set; }
         public string HomeButtonBackColorChangerLabel { get; set; }
-        public string TextEntryValue { get; set; }     
 
+        #region Home Button
+        private string homeButtonText;
+        public string HomeButtonText
+        {
+            get { return homeButtonText; }
+            set { homeButtonText = value;OnPropertyChanged(); }
+        }
 
-        public string EssentialsButtonTextChangerLabel { get; set; }
-        public string ListViewButtonTextChangerLabel { get; set; }
-        public string CustomControlTextChangerLabel { get; set; }
+        private int homeButtonBackColor;
+        public int HomeButtonBackColor
+        {
+            get { return homeButtonBackColor; }
+            set { homeButtonBackColor = value; OnPropertyChanged(); }
+        }
 
-        public string HttpButtonTextChangerLabel { get; set; }
-        public string HttpButtonTextColorChangerLabel { get; set; }
+        private int homeButtonTextColor;
+        public int HomeButtonTextColor
+        {
+            get { return homeButtonTextColor; }
+            set { homeButtonTextColor = value; OnPropertyChanged(); }
+        }
+        #endregion
 
-        private string navigateToPage;
+        #region Page Title
+        private string title;
+        public string Title
+        {
+            get { return title; }
+            set
+            {
+                title = value;
+                OnPropertyChanged();
+            }
+        }
+        public string PageTitleTextValueChangerLabel { get; set; }
+        public string PageTitleTextColorChangerLabel { get; set; }
+        public string PageTitleBackColorChangerLabel { get; set; }
+
+        public int pageTitleTextColorChanger;
+        public int PageTitleTextColorChanger
+        {
+            get { return pageTitleTextColorChanger; }
+            set
+            {
+                pageTitleTextColorChanger = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int pageTitleBackColorChanger;
+        public int PageTitleBackColorChanger
+        {
+            get { return pageTitleBackColorChanger; }
+            set
+            {
+                pageTitleBackColorChanger = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private string navigateToPage;
         public string NavigateToPage
         {
             get { return navigateToPage; }
@@ -48,12 +100,11 @@ namespace ExerciseXamarin.ViewModels
             HomeButtonTextColorChangerLabel = "Home Button Text Color Changer";
             HomeButtonBackColorChangerLabel = "Home Button Backgroind Color Changer";
 
-            HttpButtonTextColorChangerLabel = "Http Button Text Color Changer";
-            HttpButtonTextChangerLabel = "Http Button Text Changer";
+            PageTitleTextValueChangerLabel = "Page Title Text Value Changer";
+            PageTitleTextColorChangerLabel = "Page Title Text Color Changer";
+            PageTitleBackColorChangerLabel = "Page Title Background Changer";
 
-            EssentialsButtonTextChangerLabel = "Essentials Button Text Changer";
-            ListViewButtonTextChangerLabel = "ListView Button Text Changer";
-            CustomControlTextChangerLabel = "CustomControl Text Changer";
+            PageTitleTextColorChanger = 255;
         }
         public void Navigate(string numOfPage)
         {
