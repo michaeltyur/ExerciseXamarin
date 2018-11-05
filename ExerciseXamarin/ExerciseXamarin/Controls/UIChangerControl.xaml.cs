@@ -180,7 +180,7 @@ namespace ExerciseXamarin.Controls
             {
                 textColorSliderLabel.Text = TextColorSliderLabel;
             }
-
+            //Value
             if (propertyName == TextEntryProperty.PropertyName)
             {
                 textEntry.Text = TextEntry;
