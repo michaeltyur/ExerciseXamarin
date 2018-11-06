@@ -7,6 +7,5 @@
         <ResourceDictionary>
             <local:DoubleToColorConverter x:Key="doubleToColor" />
         </ResourceDictionary>
-        <StyleSheet Source="StyleSheet.css" />
     </Application.Resources>
 </Application>

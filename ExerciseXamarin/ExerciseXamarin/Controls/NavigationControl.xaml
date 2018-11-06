@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExerciseXamarin.Controls.NavigationControl">
     <ContentView.Content>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+        <StackLayout Orientation="Horizontal" 
+                     HorizontalOptions="Center">
           
             <Button x:Name="MainPageButton"
                     BackgroundColor="CornflowerBlue" 
@@ -12,7 +13,7 @@
                     BorderWidth="1"
                     CornerRadius="5"
                     BorderRadius="5"
-                    Text="Home Page"
+                    Text="Home Page"                   
                     ></Button>
           
             <Button x:Name="HttpClientButton"
@@ -49,7 +50,9 @@
                     BorderWidth="1"
                     CornerRadius="5"
                     BorderRadius="5"
-                    Text="Custom Control"></Button>
+                    Text="Custom Control"
+                    WidthRequest="130"
+                    HeightRequest="40"></Button>
 
         </StackLayout>
   </ContentView.Content>

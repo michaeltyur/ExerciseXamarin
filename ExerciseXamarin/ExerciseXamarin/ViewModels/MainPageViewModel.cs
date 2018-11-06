@@ -2,6 +2,7 @@
 using ExerciseXamarin.Interfaces;
 using ExerciseXamarin.Models;
 using ExerciseXamarin.Views;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ExerciseXamarin.ViewModels
@@ -9,15 +10,15 @@ namespace ExerciseXamarin.ViewModels
    public class MainPageViewModel
     {
         public string Title { get; set; }
-
-        private ExerciseXamarin.Models.NavManager _navManager;
+        public ICommand NavCommand { get; set; }
+        private NavManager _navManager;
 
         public MainPageViewModel()
         {
             _navManager= DependencyService.Get<NavManager>();
-            Title = CurrentDeviceInfo.GetDeviceInfo();
+            Title = CurrentDeviceInfo.GetDeviceInfo()+" Home Page";
+            NavCommand = new Command<string>(Navigate);
         }
-
 
         private string navigateToPage;
         public string NavigateToPage
@@ -29,49 +30,12 @@ namespace ExerciseXamarin.ViewModels
                 Navigate(navigateToPage);
             }
         }
+
         public void Navigate(string numOfPage)
         {
             IPage currentPage = DependencyService.Get<MainPageView>();
 
             _navManager.Navigate(currentPage,numOfPage);
-
-            //IPage navigationPage;
-
-            //INavigation navigation = ((ContentPage)currentPage).Navigation;
-
-            //switch (numOfPage)
-            //{
-            //    case "CustomControlsPageView":
-
-            //        navigationPage = DependencyService.Get<CustomControlsPageView>();
-            //        navigation.PushAsync((ContentPage)navigationPage, true);
-            //        break;
-
-            //    case "EssentialsPageView":
-
-            //        navigationPage = DependencyService.Get<EssentialsPageView>();
-            //        navigation.PushAsync((ContentPage)navigationPage, true);
-            //        break;
-
-            //    case "ItemsListPageView":
-
-            //        navigationPage = DependencyService.Get<ItemsListPageView>();
-            //        navigation.PushAsync((ContentPage)navigationPage, true);
-            //        break;
-
-            //    case "HttpClientPageView":
-
-            //        navigationPage = DependencyService.Get<HttpClientPageView>();
-            //        navigation.PushAsync(DependencyService.Get<HttpClientPageView>(), true);
-            //        break;
-
-            //case Pages.MainPageView:
-
-            //    navigation.PopToRootAsync(true);
-            //    break;
-
-            //default:
-            //    break;
         }
    }
 }

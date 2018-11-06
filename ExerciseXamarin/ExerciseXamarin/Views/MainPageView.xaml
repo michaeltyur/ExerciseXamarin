@@ -8,20 +8,98 @@
              BackgroundColor="LightGray"
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="True">
+    <!--<ContentPage.Resources>
+        <StyleSheet Source="../Styles/StyleSheet.css"/>
+    </ContentPage.Resources>-->
     <ContentPage.BindingContext>
         <vm:MainPageViewModel></vm:MainPageViewModel>
     </ContentPage.BindingContext>
-    <StackLayout>
+    <StackLayout >
         <!-- Place new controls here -->
-        <controls:NavigationControl NameOfPage="{Binding NavigateToPage}"/>
+        <controls:NavigationControl NameOfPage="{Binding NavigateToPage}" 
+                                    BackgroundColor="DarkGray"/>
         <Frame OutlineColor="Black" Padding="5">
             <Label Text="{Binding Title, Mode=OneTime}"
                 HorizontalOptions="CenterAndExpand" 
                 FontSize="Medium" />
         </Frame>
-        <Label Text="Home Page!" 
+        <!--<Label Text="Home Page!" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand"/>
+           VerticalOptions="CenterAndExpand"/>-->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <StackLayout Orientation="Vertical"
+                         Margin="10">
+                <Label Text="Http Client Page"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"
+                       Margin="0"/>
+                <Button x:Name="HttpClientButton"             
+                        WidthRequest="400"
+                        HeightRequest="300"                
+                        Image="../Assets/HttpClientImage.PNG"
+                        BorderColor="LightSlateGray"
+                        BorderWidth="2"
+                        Text="Http Client"
+                        Command="{Binding NavCommand}"
+                        CommandParameter="HttpClientPageView"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"
+                         Margin="10">
+                <Label Text="Essentials Page"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"
+                       Margin="0"/>
+                <Button x:Name="EssentialsButton"              
+                        WidthRequest="400"
+                        HeightRequest="300"                
+                        Image="../Assets/EssentialsImage.PNG"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        BorderColor="LightSlateGray"
+                        BorderWidth="2"
+                        Text="Essentials"
+                        Command="{Binding NavCommand}"
+                        CommandParameter="EssentialsPageView"/>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <StackLayout Orientation="Vertical"
+                         Margin="10">
+                <Label Text="User List Page"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"
+                       Margin="0"/>
+                <Button x:Name="UserListButton"               
+                        WidthRequest="400"
+                        HeightRequest="300"                
+                        Image="../Assets/UserListImage.PNG"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        BorderColor="LightSlateGray"
+                        BorderWidth="2"
+                        Text="UserList"
+                        Command="{Binding NavCommand}"
+                        CommandParameter="ItemsListPageView"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"
+                         Margin="10">
+                <Label Text="Custom Controls Page"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"
+                       Margin="0"/>
+                <Button x:Name="CustomControlsButton"            
+                        WidthRequest="400"
+                        HeightRequest="300"                
+                        Image="../Assets/CustomControlsImage.PNG"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        BorderColor="LightSlateGray"
+                        BorderWidth="2"
+                        Text="Custom Controls"
+                        Command="{Binding NavCommand}"
+                        CommandParameter="CustomControlsPageView"/>
+            </StackLayout>
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>

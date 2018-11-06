@@ -9,8 +9,9 @@
         <vm:EssentialsPageViewModel></vm:EssentialsPageViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <controls:NavigationControl NameOfPage="{Binding NavigateToPage}"/>
+        <StackLayout >
+            <controls:NavigationControl NameOfPage="{Binding NavigateToPage}" 
+                                        BackgroundColor="DarkGray"/>
             <Frame OutlineColor="Black" Padding="5">
                 <Label Text="{Binding Title, Mode=OneTime}"
                 HorizontalOptions="CenterAndExpand" 

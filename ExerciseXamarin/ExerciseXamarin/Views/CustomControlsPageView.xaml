@@ -11,11 +11,12 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout Padding="20" >
+        <StackLayout>
             <controls:NavigationControl NameOfPage="{Binding NavigateToPage}"
                                         ButtonBackColor="{Binding ButtonBackColor}"
                                         ButtonSize="{Binding ButtonSize}"
-                                        ButtonText="{Binding ButtonText}"/>
+                                        ButtonText="{Binding ButtonText}"
+                                        BackgroundColor="DarkGray"/>
             <Frame OutlineColor="Black" 
                    Padding="10" 
                    CornerRadius="5"

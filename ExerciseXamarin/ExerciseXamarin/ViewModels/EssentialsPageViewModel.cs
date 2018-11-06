@@ -1,5 +1,6 @@
 ﻿using ExerciseXamarin.Helpers;
 using ExerciseXamarin.Interfaces;
+using ExerciseXamarin.Models;
 using ExerciseXamarin.Views;
 using Plugin.Geolocator;
 using System;
@@ -10,12 +11,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Location = Xamarin.Essentials.Location;
 
 namespace ExerciseXamarin.ViewModels
 {
     public class EssentialsPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private NavManager _navManager;
+
         public string Title { get; set; }
         public string Alert { get; set; }
         private string navigateToPage;
@@ -30,7 +34,8 @@ namespace ExerciseXamarin.ViewModels
         }
         public EssentialsPageViewModel()
         {
-            Title = CurrentDeviceInfo.GetDeviceInfo();
+            _navManager = DependencyService.Get<NavManager>();
+            Title = CurrentDeviceInfo.GetDeviceInfo()+ " Essentials";
 
             Geocoding.MapKey = "MJ0VPbUB8qN8a65B705U~BVTx7iZ0LoszsAqqogkJ7g~AiiDFPi-CEC68spKYqX5ew-PUCFmUfa4qqIuXVEI0wC0amsG9uezm5JMft7Lc_jQ";
             Alert = "Searching location";
@@ -39,49 +44,7 @@ namespace ExerciseXamarin.ViewModels
         public void Navigate(string numOfPage)
         {
             IPage currentPage = DependencyService.Get<EssentialsPageView>();
-
-            IPage navigationPage;
-
-            INavigation navigation = ((ContentPage)currentPage).Navigation;
-
-            switch (numOfPage)
-            {
-                case "CustomControlsPageView":
-
-                    navigationPage = DependencyService.Get<CustomControlsPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
-                    navigation.RemovePage((ContentPage)currentPage);
-                    break;
-
-                //case Pages.EssentialsPageView:
-
-                //    navigationPage = DependencyService.Get<EssentialsPageView>();
-                //    navigation.PushAsync((ContentPage)navigationPage, true);
-                //    navigation.RemovePage((ContentPage)currentPage);
-                //    break;
-
-                case "ItemsListPageView":
-
-                    navigationPage = DependencyService.Get<ItemsListPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
-                    navigation.RemovePage((ContentPage)currentPage);
-                    break;
-
-                case "HttpClientPageView":
-
-                    navigationPage = DependencyService.Get<HttpClientPageView>();
-                    navigation.PushAsync(DependencyService.Get<HttpClientPageView>(), true);
-                    navigation.RemovePage((ContentPage)currentPage);
-                    break;
-
-                case "MainPageView":
-
-                    navigation.PopToRootAsync(true);
-                    break;
-
-                default:
-                    break;
-            }
+            _navManager.Navigate(currentPage, numOfPage);     
         }
 
         public async Task GetMaps()

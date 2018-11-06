@@ -18,6 +18,15 @@ namespace ExerciseXamarin.ViewModels
     {
 
         public ObservableCollection <User> UsersList { get; set; }
+        private NavManager _navManager;
+
+        //Alert
+        private string alert;
+        public string Alert
+        {
+            get { return alert; }
+            set { alert = value; OnPropertyChanged(); }
+        }
 
         private bool loadingBar;
         public bool LoadingBar
@@ -25,7 +34,15 @@ namespace ExerciseXamarin.ViewModels
             get { return loadingBar; }
             set { loadingBar = value; OnPropertyChanged(); }
         }
-        public string Title { get; set; }
+
+        //Title
+        private string title;
+        public string Title
+        {
+            get { return title; }
+            set { title = value;OnPropertyChanged(); }
+        }
+
         private string navigateToPage;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -39,67 +56,41 @@ namespace ExerciseXamarin.ViewModels
                 Navigate(navigateToPage);
             }
         }
+
         public ItemsListPageViewModel()
         {
+            _navManager = DependencyService.Get<NavManager>();
             UsersList = new ObservableCollection<User>();
             LoadingBar = true;
-            Title = CurrentDeviceInfo.GetDeviceInfo();
+            Title = CurrentDeviceInfo.GetDeviceInfo()+ " Users List";
+            Alert = string.Empty;
             GetUsersList();
         }
         public void Navigate(string numOfPage)
         {
+            //IPage currentPage = DependencyService.Get<MainPageView>();
             IPage currentPage = DependencyService.Get<ItemsListPageView>();
 
-            IPage navigationPage;
-
-            INavigation navigation = ((ContentPage)currentPage).Navigation;
-
-            switch (numOfPage)
-            {
-                case "CustomControlsPageView":
-
-                    navigationPage = DependencyService.Get<CustomControlsPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
-                    navigation.RemovePage((ContentPage)currentPage);
-                    break;
-
-                case "EssentialsPageView":
-
-                    navigationPage = DependencyService.Get<EssentialsPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
-                    navigation.RemovePage((ContentPage)currentPage);
-                    break;
-
-                //case Pages.ItemsListPageView:
-
-                //    navigationPage = DependencyService.Get<ItemsListPageView>();
-                //    navigation.PushAsync((ContentPage)navigationPage, true);
-                //    navigation.RemovePage((ContentPage)currentPage);
-                //    break;
-
-                case "HttpClientPageView":
-
-                    navigationPage = DependencyService.Get<HttpClientPageView>();
-                    navigation.PushAsync(DependencyService.Get<HttpClientPageView>(), true);
-                    navigation.RemovePage((ContentPage)currentPage);
-                    break;
-
-                case "MainPageView":
-
-                    navigation.PopToRootAsync(true);
-                    break;
-
-                default:
-                    break;
-            }
+            _navManager.Navigate(currentPage, numOfPage);
         }
 
         public async void GetUsersList()
         {
             using (var client = new HttpClient())
             {
-                var result = await client.GetStringAsync("https://randomuser.me/api/?inc=gender,name,cell,location,picture&results=20");
-                var model = JsonConvert.DeserializeObject<UserList>(result);
+                UserList model = new UserList();
+                try
+                {
+                    var result = await client.GetStringAsync("https://randomuser.me/api/?inc=gender,name,cell,location,picture&results=20");
+                    model = JsonConvert.DeserializeObject<UserList>(result);
+                }
+                catch (Exception ex)
+                {
+
+                    Alert = ex.Message;
+                    return;
+                }
+                
                 
                 for (int i = 0; i < model.Results.Length; i++)
                 {

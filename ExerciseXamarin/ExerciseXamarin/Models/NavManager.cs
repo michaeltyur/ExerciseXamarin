@@ -14,6 +14,8 @@ namespace ExerciseXamarin.Models
 
         public void Navigate(IPage page, string numOfPage)
         {
+            MainPageView mainPage = DependencyService.Get<MainPageView>();
+
             IPage currentPage = page;
 
             IPage navigationPage;
@@ -25,33 +27,59 @@ namespace ExerciseXamarin.Models
                 case "CustomControlsPageView":
 
                     navigationPage = DependencyService.Get<CustomControlsPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
+                    if (currentPage != navigationPage)
+                    {
+                        navigation.PushAsync((ContentPage)navigationPage);
+                        if (currentPage != mainPage)
+                        {
+                            navigation.RemovePage((ContentPage)currentPage);
+                        }
+                    }
                     break;
 
                 case "EssentialsPageView":
 
                     navigationPage = DependencyService.Get<EssentialsPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
+                    if (currentPage != navigationPage)
+                    {
+                        navigation.PushAsync((ContentPage)navigationPage);
+                        if (currentPage != mainPage)
+                        {
+                            navigation.RemovePage((ContentPage)currentPage);
+                        }
+                    }
                     break;
 
                 case "ItemsListPageView":
 
                     navigationPage = DependencyService.Get<ItemsListPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
+                    if (currentPage != navigationPage)
+                    {
+                        navigation.PushAsync((ContentPage)navigationPage);
+                        if (currentPage != mainPage)
+                        {
+                            navigation.RemovePage((ContentPage)currentPage);
+                        }
+                    }
                     break;
 
                 case "HttpClientPageView":
 
                     navigationPage = DependencyService.Get<HttpClientPageView>();
-                    navigation.PushAsync(DependencyService.Get<HttpClientPageView>(), true);
+                    if (currentPage != navigationPage)
+                    {
+                        navigation.PushAsync(DependencyService.Get<HttpClientPageView>());
+                        if (currentPage != mainPage)
+                        {
+                            navigation.RemovePage((ContentPage)currentPage);
+                        }
+                    }
                     break;
 
-                //case Pages.MainPageView:
-
-                //    navigation.PopToRootAsync(true);
-                //    break;
-
                 default:
+
+                    navigation = mainPage.Navigation;
+                    navigation.PopToRootAsync();
                     break;
             }
         }

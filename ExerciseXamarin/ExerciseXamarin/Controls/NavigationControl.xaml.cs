@@ -9,6 +9,8 @@ namespace ExerciseXamarin.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NavigationControl : ContentView
 	{
+        private int _buttonWidth;
+        private int _buttonHeight;
         #region Name Of Page
         public static readonly BindableProperty NameOfPageProperty = 
                                              BindableProperty.Create(nameof(NameOfPage),
@@ -97,32 +99,53 @@ namespace ExerciseXamarin.Controls
             EssentalsButton.Clicked += EssentalsButton_Clicked;
             ListViewButton.Clicked += ListViewButton_Clicked;
             CustomControlButton.Clicked += CustomControlButton_Clicked;
+            _buttonHeight = 40;
+            _buttonWidth = 130;
+           // CustomControlButton.Text = "Custom Control";
         }
 
       
         private void MainPageButton_Clicked(object sender, EventArgs e)
         {
+            if (NameOfPage == Pages.MainPageView.ToString())
+            {
+                NameOfPage = string.Empty;
+            }
             NameOfPage = Pages.MainPageView.ToString();
         }
         private void HttpClientButton_Clicked(object sender, EventArgs e)
         {
+            if(NameOfPage == Pages.HttpClientPageView.ToString())
+            {
+                NameOfPage = string.Empty;
+            }
             NameOfPage = Pages.HttpClientPageView.ToString();
 
         }
         private void EssentalsButton_Clicked(object sender, EventArgs e)
         {
+            if (NameOfPage == Pages.EssentialsPageView.ToString())
+            {
+               NameOfPage = string.Empty;
+            }
             NameOfPage = Pages.EssentialsPageView.ToString();
 
         }
         private void ListViewButton_Clicked(object sender, EventArgs e)
         {
+            if(NameOfPage == Pages.ItemsListPageView.ToString())
+            {
+                NameOfPage = string.Empty;
+            }
             NameOfPage = Pages.ItemsListPageView.ToString();
-
         }
         private void CustomControlButton_Clicked(object sender, EventArgs e)
         {
+            if(NameOfPage == Pages.CustomControlsPageView.ToString())
+            {
+                NameOfPage = string.Empty;
+            }
             NameOfPage = Pages.CustomControlsPageView.ToString();
-
         }
 
 
@@ -144,8 +167,8 @@ namespace ExerciseXamarin.Controls
             if (propertyName == ButtonSizeProperty.PropertyName)
             {
               
-                CustomControlButton.HeightRequest = CustomControlButton.HeightRequest + ButtonSize;
-                CustomControlButton.WidthRequest = CustomControlButton.WidthRequest + ButtonSize;
+                CustomControlButton.HeightRequest = _buttonHeight + ButtonSize;
+                CustomControlButton.WidthRequest = _buttonWidth + ButtonSize;
             }
             #endregion
 

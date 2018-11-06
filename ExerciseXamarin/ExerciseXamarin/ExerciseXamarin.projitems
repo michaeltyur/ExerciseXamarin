@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Command\NavCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\UIChangerControl.xaml.cs">
       <DependentUpon>UIChangerControl.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -91,6 +92,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\CustomControlsImage.PNG" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\EssentialsImage.PNG" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\HttpClientImage.PNG" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\UserListImage.PNG" />
     <Content Include="$(MSBuildThisFileDirectory)StyleSheet.css" />
     <Content Include="$(MSBuildThisFileDirectory)Styles\StyleSheet.css" />
   </ItemGroup>

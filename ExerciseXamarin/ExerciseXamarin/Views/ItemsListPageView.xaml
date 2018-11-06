@@ -5,14 +5,16 @@
              xmlns:controls="clr-namespace:ExerciseXamarin.Controls"
              x:Class="ExerciseXamarin.Views.ItemsListPageView"
              BackgroundColor="LightGray">
-        <ContentPage.BindingContext>
+    
+    <ContentPage.BindingContext>
             <vm:ItemsListPageViewModel></vm:ItemsListPageViewModel>
         </ContentPage.BindingContext>
+    
     <ContentPage.Resources>
         <DataTemplate x:Key="UserTemplate">
             <ViewCell>
                 <StackLayout VerticalOptions="Center"
-                             Margin="20"
+                             Margin="20"                            
                              BackgroundColor="gray"
                              Padding="10">
                     <Image Source="{Binding Picture.large}"
@@ -46,18 +48,26 @@
             </ViewCell>
         </DataTemplate>
     </ContentPage.Resources>
+    
     <ContentPage.Content>
         <StackLayout>
-            <controls:NavigationControl NameOfPage="{Binding NavigateToPage}"/>
-            <Frame OutlineColor="Black" Padding="5">
-                <Label Text="{Binding Title, Mode=OneTime}"
+            <controls:NavigationControl NameOfPage="{Binding NavigateToPage}" 
+                                        BackgroundColor="DarkGray"/>
+            <Frame OutlineColor="Black" 
+                   Padding="5">
+                <Label Text="{Binding Title, Mode=OneWay}"
                        HorizontalOptions="CenterAndExpand" 
-                       FontSize="Medium" />
+                       FontSize="Medium"
+                       />
             </Frame>
             <ActivityIndicator x:Name="Activity_Indicator" Color="Red" IsRunning="{Binding LoadingBar}"/>
+            <Label x:Name="Alert" 
+                   Text="{Binding Alert,Mode=OneWay}" 
+                   TextColor="Red"                
+                   HorizontalOptions="Center"
+                   FontSize="Medium"/>
             <ListView ItemTemplate="{StaticResource UserTemplate}"
-                      ItemsSource="{Binding UsersList}"
-                      Margin="20"
+                      ItemsSource="{Binding UsersList}"                      
                       WidthRequest="250"
                       MinimumWidthRequest="250"></ListView>
         </StackLayout>

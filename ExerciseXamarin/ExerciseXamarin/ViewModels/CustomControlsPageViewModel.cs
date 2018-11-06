@@ -1,5 +1,6 @@
 ﻿using ExerciseXamarin.Helpers;
 using ExerciseXamarin.Interfaces;
+using ExerciseXamarin.Models;
 using ExerciseXamarin.Views;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace ExerciseXamarin.ViewModels
 {
     public class CustomControlsPageViewModel : INotifyPropertyChanged
     {
-
+        private NavManager _navManager;
         public string TextChangerLabel { get; set; }
         public string SizeChangerLabel { get; set; }
         public string BackColorChangerLabel { get; set; }
@@ -79,7 +80,6 @@ namespace ExerciseXamarin.ViewModels
 
         #endregion
 
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string navigateToPage;
@@ -95,10 +95,12 @@ namespace ExerciseXamarin.ViewModels
 
         public CustomControlsPageViewModel()
         {
-            Title = CurrentDeviceInfo.GetDeviceInfo();
+            _navManager = DependencyService.Get<NavManager>();
+            Title = CurrentDeviceInfo.GetDeviceInfo()+" Custom Controls";
             TextChangerLabel = "Custom Controls Text Changer";
             SizeChangerLabel = "Custom Controls Button Size Changer";
             BackColorChangerLabel = "Custom Controls Button Backgroind Color Changer";
+            ButtonText = "Custom Controls";
 
             PageTitleTextValueChangerLabel = "Page Title Text Value Changer";
             PageTitleTextColorChangerLabel = "Page Title Text Color Changer";
@@ -110,49 +112,9 @@ namespace ExerciseXamarin.ViewModels
         {
 
             IPage currentPage = DependencyService.Get<CustomControlsPageView>();
-
-            IPage navigationPage;
-
-            INavigation navigation = ((ContentPage)currentPage).Navigation;
-
-            switch (numOfPage)
-            {
-                //case Pages.CustomControlsPageView:
-
-                //    navigationPage = DependencyService.Get<CustomControlsPageView>();
-                //    navigation.PushAsync((ContentPage)navigationPage, true);
-                //    navigation.RemovePage((ContentPage)currentPage);
-                //    break;
-                case "ItemsListPageView":
-
-                    navigationPage = DependencyService.Get<ItemsListPageView>();
-                    navigation.PushAsync(DependencyService.Get<HttpClientPageView>());
-                    break;
-
-                case "EssentialsPageView":
-
-                    navigationPage = DependencyService.Get<EssentialsPageView>();
-                    navigation.PushAsync((ContentPage)navigationPage, true);
-                    navigation.RemovePage((ContentPage)currentPage);
-                    break;
-
-                case "HttpClientPageView":
-
-                    navigationPage = DependencyService.Get<HttpClientPageView>();
-                    navigation.PushAsync(DependencyService.Get<HttpClientPageView>(),true);
-                    navigation.RemovePage((ContentPage)currentPage);
-                    break;
-
-                case "MainPageView":
-
-                    navigation.PopToRootAsync(true);
-                    break;
-
-                default:
-                    break;
-            }   
-
+            _navManager.Navigate(currentPage, numOfPage);
         }
+
         public void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
