@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using ExerciseXamarin.ViewModels;
-using Windows.UI.Xaml.Media;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -30,62 +29,62 @@ namespace ExerciseXamarin.Controls
         }
         #endregion
 
-        #region Home Text  Button
-        public static readonly BindableProperty HomeButtonTextProperty =
-                                             BindableProperty.Create(nameof(HomeButtonText),
+        #region Text  Button
+        public static readonly BindableProperty ButtonTextProperty =
+                                             BindableProperty.Create(nameof(ButtonText),
                                                                      typeof(string),
                                                                      typeof(NavigationControl),
                                                                      default(string),
                                                                      BindingMode.TwoWay);
-        public string HomeButtonText
+        public string ButtonText
         {
             get
             {
-                return (string)GetValue(HomeButtonTextProperty);
+                return (string)GetValue(ButtonTextProperty);
             }
             set
             {
-                SetValue(HomeButtonTextProperty, value);
+                SetValue(ButtonTextProperty, value);
             }
         }
         #endregion
 
-        #region Home Button Background Color
-        public static readonly BindableProperty HomeButtonBackColorProperty =
-                                             BindableProperty.Create(nameof(HomeButtonBackColor),
+        #region Button Background Color
+        public static readonly BindableProperty ButtonBackColorProperty =
+                                             BindableProperty.Create(nameof(ButtonBackColor),
                                                                      typeof(int),
                                                                      typeof(NavigationControl),
                                                                      default(int),
                                                                       BindingMode.TwoWay);
-        public int HomeButtonBackColor
+        public int ButtonBackColor
         {
             get
             {
-                return (int)GetValue(HomeButtonBackColorProperty);
+                return (int)GetValue(ButtonBackColorProperty);
             }
             set
             {
-                SetValue(HomeButtonBackColorProperty, value);
+                SetValue(ButtonBackColorProperty, value);
             }
         }
         #endregion
 
-        #region Home Button Text Color
-        public static readonly BindableProperty HomeButtonTextColorProperty =
-                                             BindableProperty.Create(nameof(HomeButtonTextColor),
+        #region Button Size
+        public static readonly BindableProperty ButtonSizeProperty =
+                                             BindableProperty.Create(nameof(ButtonSize),
                                                                      typeof(int),
                                                                      typeof(NavigationControl),
                                                                      default(int),
                                                                      BindingMode.TwoWay);
-        public int HomeButtonTextColor
+        public int ButtonSize
         {
             get
             {
-                return (int)GetValue(HomeButtonTextColorProperty);
+                return (int)GetValue(ButtonSizeProperty);
             }
             set
             {
-                SetValue(HomeButtonTextColorProperty, value);
+                SetValue(ButtonSizeProperty, value);
             }
         }
         #endregion
@@ -104,88 +103,52 @@ namespace ExerciseXamarin.Controls
         private void MainPageButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.MainPageView.ToString();
-            //ChangeStateNavButtons(Pages.MainPageView);
         }
         private void HttpClientButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.HttpClientPageView.ToString();
-            //ChangeStateNavButtons(Pages.HttpClientPageView);
+
         }
         private void EssentalsButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.EssentialsPageView.ToString();
-           // ChangeStateNavButtons(Pages.EssentialsPageView);
+
         }
         private void ListViewButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.ItemsListPageView.ToString();
-           // ChangeStateNavButtons(Pages.ItemsListPageView);
+
         }
         private void CustomControlButton_Clicked(object sender, EventArgs e)
         {
             NameOfPage = Pages.CustomControlsPageView.ToString();
-            //ChangeStateNavButtons(Pages.CustomControlsPageView);
+
         }
-        //private void ChangeStateNavButtons(Pages page)
-        //{
-        //    if (page == Pages.MainPageView)
-        //    {
-        //        MainPageButton.IsEnabled = false;
-        //        MainPageButton.IsEnabled = false;
-        //    }
-        //    else MainPageButton.IsEnabled = true;
 
-        //    if (page == Pages.CustomControlsPageView)
-        //        CustomControlButton.IsEnabled = false;
-        //    else CustomControlButton.IsEnabled = true;
-
-        //    if (page == Pages.EssentialsPageView)
-        //        EssentalsButton.IsEnabled = false;
-        //    else EssentalsButton.IsEnabled = true;
-
-        //    if (page == Pages.HttpClientPageView)
-        //        HttpClientButton.IsEnabled = false;
-        //    else HttpClientButton.IsEnabled = true;
-
-        //    if (page == Pages.ItemsListPageView)
-        //        ListViewButton.IsEnabled = false;
-        //    else ListViewButton.IsEnabled = true;
-        //}
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
           
-            #region Home Button
+            #region Button
             base.OnPropertyChanged(propertyName);
-            if (propertyName == HomeButtonTextProperty.PropertyName)
+            if (propertyName == ButtonTextProperty.PropertyName)
             {
-                MainPageButton.Text = HomeButtonText;
+                CustomControlButton.Text = ButtonText;
             }
-            if (propertyName == HomeButtonBackColorProperty.PropertyName)
+            if (propertyName == ButtonBackColorProperty.PropertyName)
             {
-                var newColor= Color.FromRgb(HomeButtonBackColor, 125+ HomeButtonBackColor, 255- HomeButtonBackColor);
+                var newColor= Color.FromRgb(ButtonBackColor, 125+ ButtonBackColor, 255- ButtonBackColor);
 
-                MainPageButton.BackgroundColor = newColor;
+                CustomControlButton.BackgroundColor = newColor;
             }
-            if (propertyName == HomeButtonTextColorProperty.PropertyName)
+            if (propertyName == ButtonSizeProperty.PropertyName)
             {
-                var newColor = Color.FromRgb(HomeButtonTextColor, 255, HomeButtonTextColor + HomeButtonTextColor);
-
-                MainPageButton.TextColor = newColor;
+              
+                CustomControlButton.HeightRequest = CustomControlButton.HeightRequest + ButtonSize;
+                CustomControlButton.WidthRequest = CustomControlButton.WidthRequest + ButtonSize;
             }
             #endregion
-            //if (propertyName == SliderValueTextColorProperty.PropertyName)
-            //{
-            //    textColorSlider.Value = SliderValueTextColor;
-            //}
-            //if (propertyName == BackColorSliderLabelProperty.PropertyName)
-            //{
-            //    backColorSliderLabel.Text = BackColorSliderLabel;
-            //}
-            //if (propertyName == SliderValueBackColorProperty.PropertyName)
-            //{
-            //    backColorSlider.Value = SliderValueBackColor;
-            //}
+
         }
     }
 }

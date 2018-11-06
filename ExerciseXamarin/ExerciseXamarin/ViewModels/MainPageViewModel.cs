@@ -2,9 +2,6 @@
 using ExerciseXamarin.Interfaces;
 using ExerciseXamarin.Models;
 using ExerciseXamarin.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace ExerciseXamarin.ViewModels
@@ -12,7 +9,8 @@ namespace ExerciseXamarin.ViewModels
    public class MainPageViewModel
     {
         public string Title { get; set; }
-        private NavManager _navManager;
+
+        private ExerciseXamarin.Models.NavManager _navManager;
 
         public MainPageViewModel()
         {

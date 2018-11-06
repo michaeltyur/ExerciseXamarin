@@ -4,8 +4,6 @@ using System.Text;
 
 namespace ExerciseXamarin.Models
 {
-
-
     public class UserList
     {
         public User[] Results { get; set; }

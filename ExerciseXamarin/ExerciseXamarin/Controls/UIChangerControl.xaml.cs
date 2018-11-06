@@ -57,43 +57,43 @@ namespace ExerciseXamarin.Controls
         }
         #endregion
 
-        #region Text Color Slider Label
-        public static readonly BindableProperty TextColorSliderLabelProperty =
-                     BindableProperty.Create(nameof(TextColorSliderLabel),
+        #region Button Size Slider Label
+        public static readonly BindableProperty ButtonSizeSliderLabelProperty =
+                     BindableProperty.Create(nameof(ButtonSizeSliderLabel),
                                              typeof(string),
                                              typeof(UIChangerControl),
                                              default(string),
                                              BindingMode.TwoWay);
-        public string TextColorSliderLabel
+        public string ButtonSizeSliderLabel
         {
             get
             {
-                return (string)GetValue(TextColorSliderLabelProperty);
+                return (string)GetValue(ButtonSizeSliderLabelProperty);
             }
             set
             {
-                SetValue(TextColorSliderLabelProperty, value);
+                SetValue(ButtonSizeSliderLabelProperty, value);
                 OnPropertyChanged();
             }
         }
         #endregion
 
-        #region Slider Value Text Color
-        public static readonly BindableProperty SliderValueTextColorProperty =
-             BindableProperty.Create(nameof(SliderValueTextColor),
+        #region Button Size Value Text Color
+        public static readonly BindableProperty SliderValueButtonSizeProperty =
+             BindableProperty.Create(nameof(SliderValueButtonSize),
                                      typeof(int),
                                      typeof(UIChangerControl),
                                      default(int),
                                      BindingMode.TwoWay);
-        public int SliderValueTextColor
+        public int SliderValueButtonSize
         {
             get
             {
-                return (int)GetValue(SliderValueTextColorProperty);
+                return (int)GetValue(SliderValueButtonSizeProperty);
             }
             set
             {
-                SetValue(SliderValueTextColorProperty, value);
+                SetValue(SliderValueButtonSizeProperty, value);
                 OnPropertyChanged();
             }
         }
@@ -151,7 +151,7 @@ namespace ExerciseXamarin.Controls
 
         private void TextColorSlider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            SliderValueTextColor = (int)textColorSlider.Value;
+            SliderValueButtonSize = (int)textColorSlider.Value;
         }
 
         private void BackColorSlider_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -176,18 +176,18 @@ namespace ExerciseXamarin.Controls
             {
                 backColorSliderLabel.Text = BackColorSliderLabel;
             }
-            if (propertyName == TextColorSliderLabelProperty.PropertyName)
+            if (propertyName == ButtonSizeSliderLabelProperty.PropertyName)
             {
-                textColorSliderLabel.Text = TextColorSliderLabel;
+                textColorSliderLabel.Text = ButtonSizeSliderLabel;
             }
             //Value
             if (propertyName == TextEntryProperty.PropertyName)
             {
                 textEntry.Text = TextEntry;
             }
-            if (propertyName == SliderValueTextColorProperty.PropertyName)
+            if (propertyName == SliderValueButtonSizeProperty.PropertyName)
             {
-                textColorSlider.Value = SliderValueTextColor;
+                textColorSlider.Value = SliderValueButtonSize;
             }
             if (propertyName == SliderValueBackColorProperty.PropertyName)
             {

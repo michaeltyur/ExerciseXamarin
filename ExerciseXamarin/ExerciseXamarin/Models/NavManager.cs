@@ -1,8 +1,5 @@
 ﻿using ExerciseXamarin.Interfaces;
 using ExerciseXamarin.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace ExerciseXamarin.Models
@@ -14,7 +11,8 @@ namespace ExerciseXamarin.Models
         {
 
         }
-        public void Navigate(IPage page,string numOfPage)
+
+        public void Navigate(IPage page, string numOfPage)
         {
             IPage currentPage = page;
 

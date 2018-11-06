@@ -90,4 +90,8 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)StyleSheet.css" />
+    <Content Include="$(MSBuildThisFileDirectory)Styles\StyleSheet.css" />
+  </ItemGroup>
 </Project>

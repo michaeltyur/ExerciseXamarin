@@ -13,30 +13,30 @@ namespace ExerciseXamarin.ViewModels
     public class CustomControlsPageViewModel : INotifyPropertyChanged
     {
 
-        public string HomeButtonTextChangerLabel { get; set; }
-        public string HomeButtonTextColorChangerLabel { get; set; }
-        public string HomeButtonBackColorChangerLabel { get; set; }
+        public string TextChangerLabel { get; set; }
+        public string SizeChangerLabel { get; set; }
+        public string BackColorChangerLabel { get; set; }
 
-        #region Home Button
-        private string homeButtonText;
-        public string HomeButtonText
+        #region  Button
+        private string buttonText;
+        public string ButtonText
         {
-            get { return homeButtonText; }
-            set { homeButtonText = value;OnPropertyChanged(); }
+            get { return buttonText; }
+            set { buttonText = value;OnPropertyChanged(); }
         }
 
-        private int homeButtonBackColor;
-        public int HomeButtonBackColor
+        private int buttonBackColor;
+        public int ButtonBackColor
         {
-            get { return homeButtonBackColor; }
-            set { homeButtonBackColor = value; OnPropertyChanged(); }
+            get { return buttonBackColor; }
+            set { buttonBackColor = value; OnPropertyChanged(); }
         }
 
-        private int homeButtonTextColor;
-        public int HomeButtonTextColor
+        private int buttonSize;
+        public int ButtonSize
         {
-            get { return homeButtonTextColor; }
-            set { homeButtonTextColor = value; OnPropertyChanged(); }
+            get { return buttonSize; }
+            set { buttonSize = value; OnPropertyChanged(); }
         }
         #endregion
 
@@ -96,9 +96,9 @@ namespace ExerciseXamarin.ViewModels
         public CustomControlsPageViewModel()
         {
             Title = CurrentDeviceInfo.GetDeviceInfo();
-            HomeButtonTextChangerLabel = "Home Button Text Changer";
-            HomeButtonTextColorChangerLabel = "Home Button Text Color Changer";
-            HomeButtonBackColorChangerLabel = "Home Button Backgroind Color Changer";
+            TextChangerLabel = "Custom Controls Text Changer";
+            SizeChangerLabel = "Custom Controls Button Size Changer";
+            BackColorChangerLabel = "Custom Controls Button Backgroind Color Changer";
 
             PageTitleTextValueChangerLabel = "Page Title Text Value Changer";
             PageTitleTextColorChangerLabel = "Page Title Text Color Changer";

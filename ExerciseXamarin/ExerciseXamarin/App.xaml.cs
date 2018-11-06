@@ -16,12 +16,12 @@ namespace ExerciseXamarin
         {
             InitializeComponent();
             
-            DependencyService.Register<MainPageView, MainPageView >();
-            DependencyService.Register<CustomControlsPageView, CustomControlsPageView>();
-            DependencyService.Register<HttpClientPageView,HttpClientPageView>();
-            DependencyService.Register<ItemsListPageView, ItemsListPageView>();
-            DependencyService.Register<EssentialsPageView, EssentialsPageView>();
-            DependencyService.Register<NavManager, NavManager>();
+            DependencyService.Register<MainPageView>();
+            DependencyService.Register<CustomControlsPageView>();
+            DependencyService.Register<HttpClientPageView>();
+            DependencyService.Register<ItemsListPageView>();
+            DependencyService.Register<EssentialsPageView>();
+            DependencyService.Register<NavManager>();
 
             MainPage = new NavigationPage(DependencyService.Get<MainPageView>())
             {

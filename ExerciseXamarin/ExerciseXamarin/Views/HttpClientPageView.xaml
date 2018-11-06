@@ -20,7 +20,10 @@
                    Text="{Binding Alert}" 
                    HorizontalOptions="Center"
                    FontSize="Medium"/>
-            <ActivityIndicator x:Name="Activity_Indicator" Color="Red" IsRunning="{Binding LoadingBar}" />
+            <ActivityIndicator x:Name="Activity_Indicator" 
+                               Color="Red" 
+                               IsRunning="{Binding LoadingBar}"
+                               />
             <StackLayout VerticalOptions="Center"
                          WidthRequest="220"
                          BackgroundColor="LightGray"

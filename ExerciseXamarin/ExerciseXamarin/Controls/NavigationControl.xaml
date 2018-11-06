@@ -9,6 +9,8 @@
                     BackgroundColor="CornflowerBlue" 
                     Margin="5"                     
                     BorderColor="Black" 
+                    BorderWidth="1"
+                    CornerRadius="5"
                     BorderRadius="5"
                     Text="Home Page"
                     ></Button>
@@ -17,6 +19,8 @@
                     BackgroundColor="BlueViolet" 
                     Margin="5" 
                     BorderColor="Black" 
+                    BorderWidth="1"
+                    CornerRadius="5"
                     BorderRadius="5"
                     Text="Http Client"></Button>
 
@@ -24,6 +28,8 @@
                     BackgroundColor="Blue" 
                     Margin="5" 
                     BorderColor="Black" 
+                    BorderWidth="1"
+                    CornerRadius="5"
                     BorderRadius="5"
                     Text="Essentals"></Button>
 
@@ -31,6 +37,8 @@
                     BackgroundColor="Brown" 
                     Margin="5" 
                     BorderColor="Black" 
+                    BorderWidth="1"
+                    CornerRadius="5"
                     BorderRadius="5"
                     Text="ListView with DataTemplate"></Button>
 
@@ -38,6 +46,8 @@
                     BackgroundColor="Chocolate" 
                     Margin="5" 
                     BorderColor="Black" 
+                    BorderWidth="1"
+                    CornerRadius="5"
                     BorderRadius="5"
                     Text="Custom Control"></Button>
 
