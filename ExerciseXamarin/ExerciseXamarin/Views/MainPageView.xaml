@@ -14,7 +14,7 @@
     <ContentPage.BindingContext>
         <vm:MainPageViewModel></vm:MainPageViewModel>
     </ContentPage.BindingContext>
-    <StackLayout >
+    <StackLayout>
         <!-- Place new controls here -->
         <controls:NavigationControl NameOfPage="{Binding NavigateToPage}" 
                                     BackgroundColor="DarkGray"/>
@@ -23,29 +23,20 @@
                 HorizontalOptions="CenterAndExpand" 
                 FontSize="Medium" />
         </Frame>
-        <Grid x:Name="GridSection"
-              HorizontalOptions="CenterAndExpand" 
-              VerticalOptions="CenterAndExpand" 
-              SizeChanged="Grid_SizeChanged">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-
-            <StackLayout x:Name="HttpClientStack"
+        <ScrollView>
+            <Grid>
+            <StackLayout x:Name="StackSection"
+                         HorizontalOptions="Center">
+                <StackLayout x:Name="HttpClientStack"
                          Orientation="Vertical"
                          Margin="10"
-                         Grid.Column="0"
-                         Grid.Row="0">
-                <Label Text="Http Client Page"
+                         HorizontalOptions="Center">
+                    <Label Text="Http Client Page"
                        FontSize="20"
                        HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"
                        Margin="0"/>
-                <Button x:Name="HttpClientButton"             
+                    <Button x:Name="HttpClientButton"             
                         WidthRequest="400"
                         HeightRequest="300"                
                         Image="../Assets/HttpClientImage.PNG"
@@ -53,19 +44,19 @@
                         BorderWidth="2"
                         Text="Http Client"
                         Command="{Binding NavCommand}"
-                        CommandParameter="HttpClientPageView"/>
-            </StackLayout>
+                        CommandParameter="HttpClientPageView"
+                        HorizontalOptions="Center"/>
+                </StackLayout>
 
-            <StackLayout x:Name="EssentialsStack"
+                <StackLayout x:Name="EssentialsStack"
                          Orientation="Vertical"
                          Margin="10"
-                         Grid.Column="0"
-                         Grid.Row="1">
-                <Label Text="Essentials Page"
+                         HorizontalOptions="Center">
+                    <Label Text="Essentials Page"
                        FontSize="20"
                        HorizontalTextAlignment="Center"
                        Margin="0"/>
-                <Button x:Name="EssentialsButton"              
+                    <Button x:Name="EssentialsButton"              
                         WidthRequest="400"
                         HeightRequest="300"                
                         Image="../Assets/EssentialsImage.PNG"
@@ -76,18 +67,17 @@
                         Text="Essentials"
                         Command="{Binding NavCommand}"
                         CommandParameter="EssentialsPageView"/>
-            </StackLayout>
+                </StackLayout>
 
-            <StackLayout x:Name="UserListStack"
+                <StackLayout x:Name="UserListStack"
                          Orientation="Vertical"
                          Margin="10"
-                         Grid.Column="1"
-                         Grid.Row="0">
-                <Label Text="User List Page"
+                         HorizontalOptions="Center">
+                    <Label Text="News List Page"
                        FontSize="20"
                        HorizontalTextAlignment="Center"
                        Margin="0"/>
-                <Button x:Name="UserListButton"               
+                    <Button x:Name="ItemsListButton"               
                         WidthRequest="400"
                         HeightRequest="300"                
                         Image="../Assets/UserListImage.PNG"
@@ -95,21 +85,20 @@
                         VerticalOptions="StartAndExpand"
                         BorderColor="LightSlateGray"
                         BorderWidth="2"
-                        Text="UserList"
+                        Text="News List"
                         Command="{Binding NavCommand}"
                         CommandParameter="ItemsListPageView"/>
-            </StackLayout>
+                </StackLayout>
 
-            <StackLayout x:Name="CustomControlsStack"
+                <StackLayout x:Name="CustomControlsStack"
                          Orientation="Vertical"
                          Margin="10"
-                         Grid.Column="1"
-                         Grid.Row="1">
-                <Label Text="Custom Controls Page"
+                         HorizontalOptions="Center">
+                    <Label Text="Custom Controls Page"
                        FontSize="20"
                        HorizontalTextAlignment="Center"
                        Margin="0"/>
-                <Button x:Name="CustomControlsButton"            
+                    <Button x:Name="CustomControlsButton"            
                         WidthRequest="400"
                         HeightRequest="300"                
                         Image="../Assets/CustomControlsImage.PNG"
@@ -120,9 +109,11 @@
                         Text="Custom Controls"
                         Command="{Binding NavCommand}"
                         CommandParameter="CustomControlsPageView"/>
+                </StackLayout>
             </StackLayout>
-        </Grid>
 
-        </StackLayout>
+        </Grid>
+        </ScrollView>
+    </StackLayout>
 
 </ContentPage>
