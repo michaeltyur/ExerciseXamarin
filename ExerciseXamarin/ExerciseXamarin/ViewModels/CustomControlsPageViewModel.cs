@@ -100,7 +100,7 @@ namespace ExerciseXamarin.ViewModels
             TextChangerLabel = "Custom Controls Text Changer";
             SizeChangerLabel = "Custom Controls Button Size Changer";
             BackColorChangerLabel = "Custom Controls Button Backgroind Color Changer";
-            ButtonText = "Custom Controls";
+            
 
             PageTitleTextValueChangerLabel = "Page Title Text Value Changer";
             PageTitleTextColorChangerLabel = "Page Title Text Color Changer";
@@ -110,7 +110,8 @@ namespace ExerciseXamarin.ViewModels
         }
         public void Navigate(string numOfPage)
         {
-
+            if(numOfPage!=Pages.CustomControlsPageView.ToString())
+                ButtonText = "Custom Controls";
             IPage currentPage = DependencyService.Get<CustomControlsPageView>();
             _navManager.Navigate(currentPage, numOfPage);
         }

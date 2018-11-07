@@ -23,12 +23,24 @@
                 HorizontalOptions="CenterAndExpand" 
                 FontSize="Medium" />
         </Frame>
-        <!--<Label Text="Home Page!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand"/>-->
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-            <StackLayout Orientation="Vertical"
-                         Margin="10">
+        <Grid x:Name="GridSection"
+              HorizontalOptions="CenterAndExpand" 
+              VerticalOptions="CenterAndExpand" 
+              SizeChanged="Grid_SizeChanged">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout x:Name="HttpClientStack"
+                         Orientation="Vertical"
+                         Margin="10"
+                         Grid.Column="0"
+                         Grid.Row="0">
                 <Label Text="Http Client Page"
                        FontSize="20"
                        HorizontalTextAlignment="Center"
@@ -43,8 +55,12 @@
                         Command="{Binding NavCommand}"
                         CommandParameter="HttpClientPageView"/>
             </StackLayout>
-            <StackLayout Orientation="Vertical"
-                         Margin="10">
+
+            <StackLayout x:Name="EssentialsStack"
+                         Orientation="Vertical"
+                         Margin="10"
+                         Grid.Column="0"
+                         Grid.Row="1">
                 <Label Text="Essentials Page"
                        FontSize="20"
                        HorizontalTextAlignment="Center"
@@ -61,10 +77,12 @@
                         Command="{Binding NavCommand}"
                         CommandParameter="EssentialsPageView"/>
             </StackLayout>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-            <StackLayout Orientation="Vertical"
-                         Margin="10">
+
+            <StackLayout x:Name="UserListStack"
+                         Orientation="Vertical"
+                         Margin="10"
+                         Grid.Column="1"
+                         Grid.Row="0">
                 <Label Text="User List Page"
                        FontSize="20"
                        HorizontalTextAlignment="Center"
@@ -81,8 +99,12 @@
                         Command="{Binding NavCommand}"
                         CommandParameter="ItemsListPageView"/>
             </StackLayout>
-            <StackLayout Orientation="Vertical"
-                         Margin="10">
+
+            <StackLayout x:Name="CustomControlsStack"
+                         Orientation="Vertical"
+                         Margin="10"
+                         Grid.Column="1"
+                         Grid.Row="1">
                 <Label Text="Custom Controls Page"
                        FontSize="20"
                        HorizontalTextAlignment="Center"
@@ -99,7 +121,8 @@
                         Command="{Binding NavCommand}"
                         CommandParameter="CustomControlsPageView"/>
             </StackLayout>
+        </Grid>
+
         </StackLayout>
-    </StackLayout>
 
 </ContentPage>

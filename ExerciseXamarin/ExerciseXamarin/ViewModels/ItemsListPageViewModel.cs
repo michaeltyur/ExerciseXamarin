@@ -10,14 +10,23 @@ using System.ComponentModel;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ExerciseXamarin.ViewModels
 {
     public class ItemsListPageViewModel : INotifyPropertyChanged
     {
-
-        public ObservableCollection <User> UsersList { get; set; }
+        public ObservableCollection<StoryHeader> itemsList;
+        public ObservableCollection<StoryHeader> ItemsList
+        {
+            get { return itemsList; }
+            set
+            {
+                itemsList = value;
+                OnPropertyChanged();
+            }
+        }
         private NavManager _navManager;
 
         //Alert
@@ -40,10 +49,11 @@ namespace ExerciseXamarin.ViewModels
         public string Title
         {
             get { return title; }
-            set { title = value;OnPropertyChanged(); }
+            set { title = value; OnPropertyChanged(); }
         }
 
         private string navigateToPage;
+        private string _apiAddress = "https://content.guardianapis.com/search?api-key=6e094816-d879-46d7-ae1b-a8c0ad2aa647&show-fields=thumbnail,trailText";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -60,11 +70,11 @@ namespace ExerciseXamarin.ViewModels
         public ItemsListPageViewModel()
         {
             _navManager = DependencyService.Get<NavManager>();
-            UsersList = new ObservableCollection<User>();
+            ItemsList = new ObservableCollection<StoryHeader>();
             LoadingBar = true;
-            Title = CurrentDeviceInfo.GetDeviceInfo()+ " Users List";
+            Title = CurrentDeviceInfo.GetDeviceInfo() + " News List";
             Alert = string.Empty;
-            GetUsersList();
+            FillNewsList(_apiAddress);
         }
         public void Navigate(string numOfPage)
         {
@@ -74,32 +84,39 @@ namespace ExerciseXamarin.ViewModels
             _navManager.Navigate(currentPage, numOfPage);
         }
 
-        public async void GetUsersList()
+        private async Task<T> GetListItems<T>(string apiAdress, T model)
         {
             using (var client = new HttpClient())
             {
-                UserList model = new UserList();
+
                 try
                 {
-                    var result = await client.GetStringAsync("https://randomuser.me/api/?inc=gender,name,cell,location,picture&results=20");
-                    model = JsonConvert.DeserializeObject<UserList>(result);
+                    var result = await client.GetStringAsync(apiAdress);
+                    model = JsonConvert.DeserializeObject<T>(result);
+                    return model;
                 }
                 catch (Exception ex)
                 {
 
                     Alert = ex.Message;
-                    return;
+                    return default(T);
                 }
-                
-                
-                for (int i = 0; i < model.Results.Length; i++)
-                {
-                    model.Results[i].Name.FullName = $"{model.Results[i].Name.first} {model.Results[i].Name.last}";
-                    UsersList.Add(model.Results[i]);
-                }
-                LoadingBar = false;
+
             }
         }
+        private async void FillNewsList(string apiAddress)
+        {
+               var result = await GetListItems(apiAddress, new SearchResult());
+               var array = result.SearchResponse.StoryHeaders;
+            ObservableCollection<StoryHeader> list = new ObservableCollection<StoryHeader>();
+            for (int i = 0; i< array.Length; i++)
+                {
+                  list.Add(array[i]);
+                }
+                LoadingBar = false;
+            ItemsList = list;
+        }
+
         public void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

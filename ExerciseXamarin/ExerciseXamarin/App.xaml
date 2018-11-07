@@ -5,7 +5,9 @@
              x:Class="ExerciseXamarin.App">
     <Application.Resources>
         <ResourceDictionary>
-            <local:DoubleToColorConverter x:Key="doubleToColor" />
+            <local:DoubleToColorConverter x:Key="DoubleToColorConverter" />
+            <local:DateToStringConverter x:Key="DateToStringConverter" />
+            <local:HtmlToStringConverter x:Key="HtmlToStringConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

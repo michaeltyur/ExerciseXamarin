@@ -14,6 +14,15 @@ namespace ExerciseXamarin.Views
         {
             InitializeComponent();
         }
+
+        private void Grid_SizeChanged(object sender, EventArgs e)
+        {
+            GridSection.ColumnDefinitions = new ColumnDefinition();
+            if (GridSection.Width<600)
+            {
+                HttpClientStack.Grid.Column
+            }
+        }
     }
  
 }

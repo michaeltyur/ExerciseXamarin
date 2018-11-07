@@ -25,10 +25,16 @@
       <DependentUpon>NavigationControl.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DateToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\HtmlToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\CurrentDeviceInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\NavManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SearchResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SearchResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StoryHeader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StoryHeaderAdditionalFields.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CustomControlsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EssentialsPageViewModel.cs" />

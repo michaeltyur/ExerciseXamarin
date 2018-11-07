@@ -75,11 +75,12 @@ namespace ExerciseXamarin.Models
                         }
                     }
                     break;
-
-                default:
-
+                case "MainPageView":
                     navigation = mainPage.Navigation;
                     navigation.PopToRootAsync();
+                    break;
+
+                default:
                     break;
             }
         }

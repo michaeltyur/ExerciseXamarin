@@ -11,38 +11,36 @@
         </ContentPage.BindingContext>
     
     <ContentPage.Resources>
-        <DataTemplate x:Key="UserTemplate">
+        <DataTemplate x:Key="ItemTemplate">
             <ViewCell>
                 <StackLayout VerticalOptions="Center"
                              Margin="20"                            
                              BackgroundColor="gray"
                              Padding="10">
-                    <Image Source="{Binding Picture.large}"
-                           WidthRequest="200"
-                           HeightRequest="250"
-                           Margin="5"></Image>
-                    <Label Text="{Binding Name.FullName}" 
+                    <Frame BorderColor="DimGray" 
+                           HasShadow="True" 
+                           Margin="10" >
+                        <Label Text="{Binding WebTitle}" 
                            FontSize="25"
                            HorizontalTextAlignment="Center"></Label>
+                    </Frame>
+                    <Image Source="{Binding StoryHeaderAdditionalFields.Thumbnail}"
+                           WidthRequest="200"
+                           HeightRequest="250"
+                           Margin="5"/>
+                    <Label Text="{Binding StoryHeaderAdditionalFields.TrailText, Converter={StaticResource HtmlToStringConverter}}"
+                               HorizontalTextAlignment="Center"
+                               FontSize="20"/>
+
                     <StackLayout Orientation="Horizontal"
                                  HorizontalOptions="Center">
-                        <Label FontSize="15" 
-                               Text="City:"
+                        <Label FontSize="18" 
+                               Text="Date:"
                                HorizontalTextAlignment="Center"
-                               Margin="5"></Label>
-                        <Label Text="{Binding Location.city}"
+                               Margin="5"/>
+                        <Label Text="{Binding WebPublicationDate.Date, Converter={StaticResource DateToStringConverter}}"
                                HorizontalTextAlignment="Center"
-                               FontSize="20"></Label>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal"
-                                 HorizontalOptions="Center">
-                        <Label FontSize="15" 
-                               Text="Phone:"
-                               HorizontalTextAlignment="Center"
-                               Margin="5"></Label>
-                        <Label Text="{Binding Cell}"
-                               HorizontalTextAlignment="Center"
-                               FontSize="20"></Label>
+                               FontSize="20"/>
                     </StackLayout>
                 </StackLayout>
             </ViewCell>
@@ -66,8 +64,8 @@
                    TextColor="Red"                
                    HorizontalOptions="Center"
                    FontSize="Medium"/>
-            <ListView ItemTemplate="{StaticResource UserTemplate}"
-                      ItemsSource="{Binding UsersList}"                      
+            <ListView ItemTemplate="{StaticResource ItemTemplate}"
+                      ItemsSource="{Binding ItemsList}"                      
                       WidthRequest="250"
                       MinimumWidthRequest="250"></ListView>
         </StackLayout>
