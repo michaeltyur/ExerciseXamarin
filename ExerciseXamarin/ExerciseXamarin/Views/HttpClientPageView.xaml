@@ -25,13 +25,15 @@
                    TextColor="Red"
                    HorizontalOptions="Center"
                    FontSize="Medium"/>
-            <StackLayout VerticalOptions="Center"
-                         WidthRequest="220"
+            <Frame WidthRequest="500" 
+                   BorderColor="DimGray"
+                   HorizontalOptions="CenterAndExpand">
+                <StackLayout VerticalOptions="Center"
                          BackgroundColor="LightGray"
                          Padding="20">
                 <Image Source="{Binding Image}"
-                       WidthRequest="200"
-                       HeightRequest="250"></Image>
+                       WidthRequest="300"
+                       HeightRequest="350"></Image>
                 <Label Text="{Binding Name}" 
                        FontSize="25"
                        HorizontalTextAlignment="Center"></Label>
@@ -42,6 +44,8 @@
                        HorizontalTextAlignment="Center"
                        FontSize="20"></Label>
             </StackLayout>
+            </Frame>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

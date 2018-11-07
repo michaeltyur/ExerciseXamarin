@@ -13,13 +13,14 @@
     <ContentPage.Resources>
         <DataTemplate x:Key="ItemTemplate">
             <ViewCell>
-                <StackLayout VerticalOptions="Center"
-                             Margin="20"                            
-                             BackgroundColor="gray"
-                             Padding="10">
+                <Frame HorizontalOptions="Center"
+                       CornerRadius="10">
+                    <StackLayout Margin="20"  
+                                 BackgroundColor="gray"
+                                 Padding="10">
                     <Frame BorderColor="DimGray" 
                            HasShadow="True" 
-                           Margin="10" >
+                           Margin="10">
                         <Label Text="{Binding WebTitle}" 
                            FontSize="25"
                            HorizontalTextAlignment="Center"></Label>
@@ -43,6 +44,7 @@
                                FontSize="20"/>
                     </StackLayout>
                 </StackLayout>
+                </Frame>
             </ViewCell>
         </DataTemplate>
     </ContentPage.Resources>
@@ -64,10 +66,12 @@
                    TextColor="Red"                
                    HorizontalOptions="Center"
                    FontSize="Medium"/>
-            <ListView ItemTemplate="{StaticResource ItemTemplate}"
-                      ItemsSource="{Binding ItemsList}"                      
-                      WidthRequest="250"
-                      MinimumWidthRequest="250"></ListView>
+
+                <ListView ItemTemplate="{StaticResource ItemTemplate}"
+                      ItemsSource="{Binding ItemsList}"                          
+                      WidthRequest="700"
+                      HorizontalOptions="CenterAndExpand"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
